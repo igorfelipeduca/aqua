@@ -1,7 +1,26 @@
 {
-  "name": "registry",
+  "name": "aqua",
   "version": "0.1.0",
   "private": true,
+  "description": "The classic Mac OS X interface rebuilt as a shadcn/ui registry: gel buttons, pinstripes, brushed metal, the Dock and the iPod.",
+  "homepage": "https://aqua.duca.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igorfelipeduca/aqua"
+  },
+  "author": "Igor Duca <yelldutz@gmail.com> (https://duca.dev)",
+  "license": "MIT",
+  "keywords": [
+    "shadcn",
+    "shadcn-registry",
+    "react",
+    "tailwind",
+    "radix",
+    "aqua",
+    "mac-os-x",
+    "skeuomorphism",
+    "design-system"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

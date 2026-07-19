@@ -73,7 +73,7 @@ const JSON_LD = JSON.stringify({
       "@type": "SoftwareSourceCode",
       name: "Aqua UI",
       url: SITE_URL,
-      codeRepository: "https://github.com/igorfelipeduca",
+      codeRepository: "https://github.com/igorfelipeduca/aqua",
       programmingLanguage: ["TypeScript", "React"],
       runtimePlatform: "React 19",
       description:
