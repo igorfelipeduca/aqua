@@ -75,7 +75,7 @@ export default function ChatDemo() {
         <div className="flex min-h-0 flex-1 flex-col border-t border-[#8b909a] bg-[#f4f5f8] [--chat-panel:#f4f5f8]">
           <div
             ref={scrollRef}
-            className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto p-5"
+            className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto overflow-x-hidden p-5"
           >
             {messages.map((message) => (
               <ChatBubble key={message.id} from={message.from}>
