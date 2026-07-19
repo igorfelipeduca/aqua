@@ -12,7 +12,7 @@ function Tabs({
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
-      className={cn("flex flex-col", className)}
+      className={cn("flex flex-col items-center", className)}
       {...props}
     />
   )
@@ -25,7 +25,10 @@ function TabsList({
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
-      className={cn("relative z-10 -mb-px flex items-end gap-1 px-3", className)}
+      className={cn(
+        "z-10 -mb-[14px] inline-flex rounded-full shadow-[0_1px_3px_rgba(20,30,50,0.25)]",
+        className
+      )}
       {...props}
     />
   )
@@ -39,7 +42,7 @@ function TabsTrigger({
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "rounded-t-lg border border-b-0 border-[#9599a1] bg-[linear-gradient(180deg,#f2f3f5_0%,#d8dade_55%,#c9ccd1_100%)] px-[22px] pb-2 pt-[7px] text-[13px] text-[#43484f] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] outline-none transition-[filter] [text-shadow:0_1px_0_rgba(255,255,255,0.7)] hover:brightness-103 focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-[#1c5fb8] data-[state=active]:bg-[linear-gradient(180deg,#a8d0f7_0%,#4a90ec_50%,#2a6fd0_51%,#6aabf3_100%)] data-[state=active]:text-white data-[state=active]:shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] data-[state=active]:[text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]",
+        "relative -ml-px border border-[#8b909a] bg-[linear-gradient(180deg,#fdfdfe_0%,#e4e7ec_48%,#d3d7de_52%,#eceef2_100%)] px-5 py-[5px] text-[13px] text-[#3a3f47] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] outline-none transition-[filter] first:ml-0 first:rounded-l-full last:rounded-r-full hover:brightness-103 focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70 active:brightness-95 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-[#1c5fb8] data-[state=active]:bg-[linear-gradient(180deg,#a8d0f7_0%,#4a90ec_50%,#2a6fd0_51%,#6aabf3_100%)] data-[state=active]:text-white data-[state=active]:shadow-[inset_0_2px_4px_rgba(10,40,90,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] data-[state=active]:[text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]",
         className
       )}
       {...props}
@@ -55,7 +58,7 @@ function TabsContent({
     <TabsPrimitive.Content
       data-slot="tabs-content"
       className={cn(
-        "rounded-md border border-[#a9adb5] bg-[repeating-linear-gradient(180deg,#f4f6fa_0px,#f4f6fa_2px,#eaeef4_2px,#eaeef4_4px)] p-6 shadow-[inset_0_1px_4px_rgba(20,30,50,0.12)] outline-none",
+        "w-full rounded-lg border border-[#a9adb5] bg-[repeating-linear-gradient(180deg,#f4f6fa_0px,#f4f6fa_2px,#eaeef4_2px,#eaeef4_4px)] p-6 pt-8 shadow-[inset_0_1px_4px_rgba(20,30,50,0.12)] outline-none",
         className
       )}
       {...props}

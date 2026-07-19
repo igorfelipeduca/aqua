@@ -1,5 +1,19 @@
 import { CodeBlock, InstallCommand } from "@/components/code-block"
 import { Button } from "@/registry/aqua/ui/button"
+import { Checkbox } from "@/registry/aqua/ui/checkbox"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/aqua/ui/dialog"
+import { Input } from "@/registry/aqua/ui/input"
+import { Progress } from "@/registry/aqua/ui/progress"
+import { Slider } from "@/registry/aqua/ui/slider"
+import { Switch } from "@/registry/aqua/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -134,10 +148,191 @@ export const DOCS: Record<string, Doc> = {
       </>
     ),
   },
+  checkbox: {
+    title: "Checkbox",
+    description: "Glossy square that fills with blue gel when checked.",
+    body: (
+      <>
+        <Preview>
+          <label className="flex items-center gap-2 text-[13px]">
+            <Checkbox defaultChecked /> Open windows at login
+          </label>
+          <label className="flex items-center gap-2 text-[13px]">
+            <Checkbox /> Empty Trash securely
+          </label>
+          <label className="flex items-center gap-2 text-[13px] opacity-70">
+            <Checkbox disabled /> Requires restart
+          </label>
+        </Preview>
+        <InstallCommand name="checkbox" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Checkbox } from "@/components/ui/checkbox"
+
+<Checkbox defaultChecked />`}
+        />
+      </>
+    ),
+  },
+  dialog: {
+    title: "Dialog",
+    description:
+      "The Aqua alert panel: soft gradient sheet with a deep drop shadow.",
+    body: (
+      <>
+        <Preview>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="secondary">show dialog</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>
+                  Are you sure you want to empty the Trash?
+                </DialogTitle>
+                <DialogDescription>
+                  You cannot undo this action. Items in the Trash will be
+                  deleted permanently.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <Button variant="secondary" size="sm">
+                  Cancel
+                </Button>
+                <Button variant="destructive" size="sm">
+                  Empty Trash
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </Preview>
+        <InstallCommand name="dialog" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="secondary">show dialog</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Title</DialogTitle>
+      <DialogDescription>Description.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <Button size="sm">OK</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`}
+        />
+      </>
+    ),
+  },
+  input: {
+    title: "Input",
+    description:
+      "The classic Aqua text field: white well with an inset shadow and blue focus halo.",
+    body: (
+      <>
+        <Preview>
+          <div className="flex w-full max-w-xs flex-col gap-3">
+            <Input placeholder="Search" />
+            <Input type="email" placeholder="steve@apple.com" />
+            <Input disabled placeholder="Disabled" />
+          </div>
+        </Preview>
+        <InstallCommand name="input" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Input } from "@/components/ui/input"
+
+<Input type="email" placeholder="steve@apple.com" />`}
+        />
+      </>
+    ),
+  },
+  progress: {
+    title: "Progress",
+    description: "The iconic striped blue barber-pole progress bar.",
+    body: (
+      <>
+        <Preview>
+          <div className="flex w-full max-w-xs flex-col gap-4">
+            <Progress value={62} />
+            <Progress value={90} />
+          </div>
+        </Preview>
+        <InstallCommand name="progress" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Progress } from "@/components/ui/progress"
+
+<Progress value={62} />`}
+        />
+        <p>
+          The stripes march to the right while work is in progress, and stand
+          still under <code>prefers-reduced-motion</code>.
+        </p>
+      </>
+    ),
+  },
+  slider: {
+    title: "Slider",
+    description:
+      "iTunes volume slider: groove track, blue gel range, polished knob.",
+    body: (
+      <>
+        <Preview>
+          <div className="w-full max-w-xs">
+            <Slider defaultValue={[62]} />
+          </div>
+        </Preview>
+        <InstallCommand name="slider" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Slider } from "@/components/ui/slider"
+
+<Slider defaultValue={[62]} max={100} step={1} />`}
+        />
+      </>
+    ),
+  },
+  switch: {
+    title: "Switch",
+    description: "Gel toggle with a polished metal thumb.",
+    body: (
+      <>
+        <Preview>
+          <label className="flex items-center gap-2 text-[13px]">
+            <Switch defaultChecked /> Wi-Fi
+          </label>
+          <label className="flex items-center gap-2 text-[13px]">
+            <Switch /> Bluetooth
+          </label>
+        </Preview>
+        <InstallCommand name="switch" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Switch } from "@/components/ui/switch"
+
+<Switch defaultChecked />`}
+        />
+      </>
+    ),
+  },
   tabs: {
     title: "Tabs",
     description:
-      "Glossy tab bar over a pinstripe pane, straight out of System Preferences.",
+      "A gel segmented control seated on the top edge of a pinstripe pane, the way NSTabView drew it.",
     body: (
       <>
         <Preview>

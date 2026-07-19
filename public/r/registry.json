@@ -61,6 +61,94 @@
       ]
     },
     {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "The classic Aqua text field: white well with an inset shadow and blue focus halo.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Glossy square that fills with blue gel when checked.",
+      "dependencies": ["@radix-ui/react-checkbox", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Gel toggle with a polished metal thumb.",
+      "dependencies": ["@radix-ui/react-switch"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "iTunes volume slider: groove track, blue gel range, polished knob.",
+      "dependencies": ["@radix-ui/react-slider"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "The Aqua alert panel: soft gradient sheet with a deep drop shadow.",
+      "dependencies": ["@radix-ui/react-dialog"],
+      "devDependencies": ["tw-animate-css"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "The iconic striped blue barber-pole progress bar.",
+      "dependencies": ["@radix-ui/react-progress"],
+      "css": {
+        "@keyframes aqua-progress-stripes": {
+          "from": {
+            "background-position": "0 0"
+          },
+          "to": {
+            "background-position": "20px 0"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/aqua/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",

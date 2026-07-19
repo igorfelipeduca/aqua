@@ -77,7 +77,7 @@ export default function Home() {
 
       <ComponentDemo
         title="Tabs"
-        description="Glossy tab bar over a pinstripe pane, straight out of System Preferences."
+        description="A gel segmented control seated on the top edge of a pinstripe pane, the way NSTabView drew it."
         name="tabs"
       >
         <Tabs defaultValue="general" className="w-full max-w-md">

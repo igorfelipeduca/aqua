@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "title": "Slider",
+  "description": "iTunes volume slider: groove track, blue gel range, polished knob.",
+  "dependencies": [
+    "@radix-ui/react-slider"
+  ],
+  "files": [
+    {
+      "path": "registry/aqua/ui/slider.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SliderPrimitive from \"@radix-ui/react-slider\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Slider({\n  className,\n  defaultValue,\n  value,\n  min = 0,\n  max = 100,\n  ...props\n}: React.ComponentProps<typeof SliderPrimitive.Root>) {\n  const values = React.useMemo(() => {\n    if (Array.isArray(value)) return value\n    if (Array.isArray(defaultValue)) return defaultValue\n    return [min]\n  }, [value, defaultValue, min])\n\n  return (\n    <SliderPrimitive.Root\n      data-slot=\"slider\"\n      defaultValue={defaultValue}\n      value={value}\n      min={min}\n      max={max}\n      className={cn(\n        \"relative flex w-full touch-none select-none items-center data-[disabled]:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <SliderPrimitive.Track\n        data-slot=\"slider-track\"\n        className=\"relative h-2 w-full grow overflow-hidden rounded-full bg-[#d7dbe2] shadow-[inset_0_1px_3px_rgba(0,0,0,0.25)]\"\n      >\n        <SliderPrimitive.Range\n          data-slot=\"slider-range\"\n          className=\"absolute h-full bg-[linear-gradient(180deg,#a5d0fa_0%,#4a95ef_50%,#2f7de0_55%,#6fb4f7_100%)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]\"\n        />\n      </SliderPrimitive.Track>\n      {values.map((_, i) => (\n        <SliderPrimitive.Thumb\n          key={i}\n          data-slot=\"slider-thumb\"\n          className=\"block size-[18px] rounded-full border border-[#8b909a] bg-[radial-gradient(circle_at_50%_30%,#ffffff,#d5d9df_70%,#c3c8cf_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_1px_3px_rgba(20,30,50,0.35)] outline-none transition-[filter] hover:brightness-103 focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70 active:brightness-97\"\n        />\n      ))}\n    </SliderPrimitive.Root>\n  )\n}\n\nexport { Slider }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
