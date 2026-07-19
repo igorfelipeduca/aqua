@@ -16,35 +16,42 @@ const MESSAGES = [
   {
     from: "Steve Jobs",
     address: "sjobs@apple.com",
-    subject: "One more thing",
+    subject: "Re: Aqua, my shadcn registry",
     date: "Today, 9:41 AM",
-    body: "We've been working on something really big. I can't say much yet, but let's just say the demo on Friday is going to be insanely great.\n\nKeep it quiet.\n\nSteve",
+    body: "Igor,\n\nSaw the registry. When we designed Aqua we wanted buttons you'd want to lick. Yours pass the test.\n\nThe first tabs were wrong. Folder tabs are a Windows thing. You fixed it before I had to call. Good.\n\nSteve",
   },
   {
-    from: "MobileMe",
-    address: "noreply@me.com",
-    subject: "Welcome to MobileMe",
+    from: "Steve Jobs",
+    address: "sjobs@apple.com",
+    subject: "One more thing",
     date: "Today, 8:12 AM",
-    body: "Your me.com account is ready. Mail, contacts and calendars now sync between your Mac, iPhone and the web.\n\nExperience the cloud, before we call it that.",
+    body: "The Dock magnification on hover. The label. The little running dot.\n\nThat's the kind of detail people don't notice consciously, but they feel it.\n\nDon't ship anything that doesn't have that.\n\nSteve\n\nSent from my iPhone",
   },
   {
-    from: "iTunes Store",
-    address: "store@itunes.com",
-    subject: "Your receipt No. 118813",
+    from: "Steve Jobs",
+    address: "sjobs@apple.com",
+    subject: "Re: can I show you the striped progress bar?",
     date: "Yesterday",
-    body: "Thank you for your purchase.\n\n1x Album: In Rainbows — Radiohead ....... $9.99\n\nTotal: $9.99\n\nAvailable to play on up to 5 authorized computers.",
+    body: "No need. If the stripes don't march, it's broken. If they march under prefers-reduced-motion, it's also broken.\n\nI assume you got both right.\n\nSteve",
   },
   {
-    from: "Ars Technica",
-    address: "rss@arstechnica.com",
-    subject: "Snow Leopard review: under the hood",
+    from: "Steve Jobs",
+    address: "sjobs@apple.com",
+    subject: "Re: pricing the UI kit",
     date: "Yesterday",
-    body: "No new features. That was the promise, and somehow it made everyone want it more. John Siracusa needs 23 pages to explain why.",
+    body: "Free. Open code.\n\nYou're not selling components, you're selling taste. The components are the demo.\n\nReal artists ship.\n\nSteve\n\nSent from my iPhone",
+  },
+  {
+    from: "Steve Jobs",
+    address: "sjobs@apple.com",
+    subject: "Focus",
+    date: "Monday",
+    body: "You asked what to build next. Wrong question.\n\nDeciding what not to do is as important as deciding what to do. Ship the twelve components you have. Deploy the site. Then we talk.\n\nSteve",
   },
 ]
 
 const MAILBOXES = [
-  { name: "Inbox", badge: 4, selected: true },
+  { name: "Inbox", badge: 5, selected: true },
   { name: "Sent", badge: 0, selected: false },
   { name: "Drafts", badge: 1, selected: false },
   { name: "Junk", badge: 0, selected: false },
@@ -58,11 +65,11 @@ export default function MailDemo() {
   const paragraphs = message.body.split("\n\n")
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center gap-5 px-4 py-10">
-      <Window className="w-full max-w-4xl">
+    <div className="flex h-svh flex-col">
+      <Window className="flex h-full w-full flex-col rounded-none shadow-none">
         <WindowTitlebar>
           <TrafficLights />
-          <WindowTitle>Inbox (4 messages)</WindowTitle>
+          <WindowTitle>Inbox (5 messages)</WindowTitle>
         </WindowTitlebar>
 
         <div className="flex items-center gap-2.5 px-4 pb-3 pt-0.5">
@@ -81,7 +88,7 @@ export default function MailDemo() {
           <Input placeholder="Search" className="ml-auto h-7 max-w-44 rounded-full" />
         </div>
 
-        <div className="flex h-[440px] border-t border-[#8b909a] bg-[#f4f5f8] text-[13px]">
+        <div className="flex min-h-0 flex-1 border-t border-[#8b909a] bg-[#f4f5f8] text-[13px]">
           <aside className="w-44 shrink-0 overflow-y-auto border-r border-[#b6bcc6] bg-[#dde4ed] py-3">
             <p className="px-4 pb-1 text-[11px] font-bold uppercase tracking-wide text-[#7a8089] [text-shadow:0_1px_0_rgba(255,255,255,0.7)]">
               Mailboxes
@@ -116,7 +123,7 @@ export default function MailDemo() {
           </aside>
 
           <div className="flex min-w-0 flex-1 flex-col">
-            <div className="h-[190px] overflow-y-auto border-b border-[#b6bcc6]">
+            <div className="h-[38%] min-h-[150px] overflow-y-auto border-b border-[#b6bcc6]">
               <div className="sticky top-0 flex border-b border-[#9599a1] bg-[linear-gradient(180deg,#fbfcfd_0%,#e8ebef_55%,#dcdfe4_100%)] px-3 py-1 text-[11px] font-bold text-[#43484f] [text-shadow:0_1px_0_rgba(255,255,255,0.7)]">
                 <span className="w-36 shrink-0">From</span>
                 <span className="flex-1">Subject</span>
@@ -154,7 +161,7 @@ export default function MailDemo() {
                 <p className="text-[#7a8089]">
                   {message.from} &lt;{message.address}&gt;
                 </p>
-                <p className="text-[#7a8089]">To: Igor Duca &lt;user@duca.dev&gt;</p>
+                <p className="text-[#7a8089]">To: Igor Duca &lt;igor@duca.dev&gt;</p>
               </div>
               <div className="flex flex-col gap-3 px-5 py-4 leading-6">
                 {paragraphs.map((paragraph) => (
@@ -166,14 +173,13 @@ export default function MailDemo() {
             </div>
           </div>
         </div>
+        <div className="flex items-center justify-between border-t border-[#b6bcc6] bg-[#dde4ed] px-4 py-1 text-[11px] text-[#7a8089]">
+          <span>Built entirely from @aqua registry components.</span>
+          <Link href="/docs/introduction" className="text-[#1c5fb8] hover:underline">
+            Read the docs
+          </Link>
+        </div>
       </Window>
-
-      <p className="text-xs text-muted-foreground">
-        Built entirely from @aqua registry components.{" "}
-        <Link href="/docs/introduction" className="text-[#1c5fb8] hover:underline">
-          Read the docs
-        </Link>
-      </p>
     </div>
   )
 }
