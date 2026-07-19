@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "title": "Aqua Theme",
+  "description": "Mac OS X era palette and typography for shadcn/ui projects.",
+  "cssVars": {
+    "theme": {
+      "font-sans": "'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', Verdana, sans-serif"
+    },
+    "light": {
+      "background": "#eef0f3",
+      "foreground": "#33383f",
+      "card": "#f7f8fa",
+      "card-foreground": "#33383f",
+      "popover": "#f7f8fa",
+      "popover-foreground": "#33383f",
+      "primary": "#2f7de0",
+      "primary-foreground": "#ffffff",
+      "secondary": "#e4e7ec",
+      "secondary-foreground": "#3a3f47",
+      "muted": "#e4e7ec",
+      "muted-foreground": "#7a8089",
+      "accent": "#d5e6fb",
+      "accent-foreground": "#1c5fb8",
+      "destructive": "#e03a2f",
+      "border": "#aeb3bc",
+      "input": "#aeb3bc",
+      "ring": "#6cb0f7"
+    }
+  },
+  "type": "registry:theme"
+}

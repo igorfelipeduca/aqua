@@ -1,0 +1,78 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aqua",
+  "homepage": "https://aqua.duca.dev",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Aqua Theme",
+      "description": "Mac OS X era palette and typography for shadcn/ui projects.",
+      "cssVars": {
+        "theme": {
+          "font-sans": "'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', Verdana, sans-serif"
+        },
+        "light": {
+          "background": "#eef0f3",
+          "foreground": "#33383f",
+          "card": "#f7f8fa",
+          "card-foreground": "#33383f",
+          "popover": "#f7f8fa",
+          "popover-foreground": "#33383f",
+          "primary": "#2f7de0",
+          "primary-foreground": "#ffffff",
+          "secondary": "#e4e7ec",
+          "secondary-foreground": "#3a3f47",
+          "muted": "#e4e7ec",
+          "muted-foreground": "#7a8089",
+          "accent": "#d5e6fb",
+          "accent-foreground": "#1c5fb8",
+          "destructive": "#e03a2f",
+          "border": "#aeb3bc",
+          "input": "#aeb3bc",
+          "ring": "#6cb0f7"
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Glossy Aqua pill button with gel highlight, in blue, capsule and red.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Aqua tab bar with glossy active state over a pinstripe content pane.",
+      "dependencies": ["@radix-ui/react-tabs"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Dock-style label tooltip: dark translucent capsule with white text.",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "devDependencies": ["tw-animate-css"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

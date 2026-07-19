@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "title": "Tooltip",
+  "description": "Dock-style label tooltip: dark translucent capsule with white text.",
+  "dependencies": [
+    "@radix-ui/react-tooltip"
+  ],
+  "devDependencies": [
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "registry/aqua/ui/tooltip.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as TooltipPrimitive from \"@radix-ui/react-tooltip\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction TooltipProvider({\n  delayDuration = 200,\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {\n  return (\n    <TooltipPrimitive.Provider\n      data-slot=\"tooltip-provider\"\n      delayDuration={delayDuration}\n      {...props}\n    />\n  )\n}\n\nfunction Tooltip({\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Root>) {\n  return (\n    <TooltipProvider>\n      <TooltipPrimitive.Root data-slot=\"tooltip\" {...props} />\n    </TooltipProvider>\n  )\n}\n\nfunction TooltipTrigger({\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />\n}\n\nfunction TooltipContent({\n  className,\n  sideOffset = 8,\n  children,\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Content>) {\n  return (\n    <TooltipPrimitive.Portal>\n      <TooltipPrimitive.Content\n        data-slot=\"tooltip-content\"\n        sideOffset={sideOffset}\n        className={cn(\n          \"z-50 w-fit whitespace-nowrap rounded-full bg-[rgba(40,45,55,0.88)] px-3 py-1 text-xs text-white shadow-[0_2px_6px_rgba(20,30,50,0.3)] animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n          className\n        )}\n        {...props}\n      >\n        {children}\n      </TooltipPrimitive.Content>\n    </TooltipPrimitive.Portal>\n  )\n}\n\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
