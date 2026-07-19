@@ -1,6 +1,7 @@
 export type DocsNavItem = {
   title: string
   slug: string
+  href?: string
 }
 
 export type DocsNavSection = {
@@ -30,6 +31,10 @@ export const DOCS_NAV: DocsNavSection[] = [
       { title: "Tabs", slug: "tabs" },
       { title: "Tooltip", slug: "tooltip" },
     ],
+  },
+  {
+    label: "Demos",
+    items: [{ title: "Mail (2009)", slug: "mail", href: "/demo/mail" }],
   },
   {
     label: "Signature",

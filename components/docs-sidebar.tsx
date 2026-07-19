@@ -18,7 +18,7 @@ export function DocsSidebar() {
           </p>
           <ul className="flex flex-col gap-px">
             {section.items.map((item) => {
-              const href = `/docs/${item.slug}`
+              const href = item.href ?? `/docs/${item.slug}`
               const active = pathname === href
 
               return (
