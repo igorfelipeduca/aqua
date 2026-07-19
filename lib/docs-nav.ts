@@ -2,6 +2,7 @@ export type DocsNavItem = {
   title: string
   slug: string
   href?: string
+  external?: boolean
 }
 
 export type DocsNavSection = {
@@ -35,7 +36,10 @@ export const DOCS_NAV: DocsNavSection[] = [
   },
   {
     label: "Demos",
-    items: [{ title: "Mail (2009)", slug: "mail", href: "/demo/mail" }],
+    items: [
+      { title: "Chat", slug: "chat", href: "/demo/chat", external: true },
+      { title: "Mail (2009)", slug: "mail", href: "/demo/mail", external: true },
+    ],
   },
   {
     label: "Signature",

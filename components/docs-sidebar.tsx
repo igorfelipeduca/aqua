@@ -25,6 +25,7 @@ export function DocsSidebar() {
                 <li key={item.slug}>
                   <Link
                     href={href}
+                    target={item.external ? "_blank" : undefined}
                     className={cn(
                       "block rounded-md px-3 py-1 text-[13px] transition-colors",
                       active
