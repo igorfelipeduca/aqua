@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader",
+  "title": "Loader",
+  "description": "The twelve-spoke spinner, ticking around in steps like the original.",
+  "files": [
+    {
+      "path": "registry/aqua/ui/loader.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst SPOKES = Array.from({ length: 12 }, (_, index) => index)\n\nfunction Loader({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <svg\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\n        \"size-6 animate-[spin_0.9s_steps(12)_infinite] text-[#5a6069] motion-reduce:animate-none\",\n        className\n      )}\n      {...props}\n    >\n      {SPOKES.map((spoke) => (\n        <rect\n          key={spoke}\n          x=\"11.3\"\n          y=\"2\"\n          width=\"1.4\"\n          height=\"5.6\"\n          rx=\"0.7\"\n          fill=\"currentColor\"\n          opacity={(spoke + 1) / 12}\n          transform={`rotate(${spoke * 30} 12 12)`}\n        />\n      ))}\n    </svg>\n  )\n}\n\nexport { Loader }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -33,6 +33,7 @@ export const DOCS_NAV: DocsNavSection[] = [
       { title: "Dropdown Menu", slug: "dropdown-menu" },
       { title: "Input", slug: "input" },
       { title: "Label", slug: "label" },
+      { title: "Loader", slug: "loader" },
       { title: "Progress", slug: "progress" },
       { title: "Radio Group", slug: "radio-group" },
       { title: "Select", slug: "select" },

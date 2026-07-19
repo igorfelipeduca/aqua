@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/aqua/ui/dropdown-menu"
 import { Label } from "@/registry/aqua/ui/label"
+import { Loader } from "@/registry/aqua/ui/loader"
 import { RadioGroup, RadioGroupItem } from "@/registry/aqua/ui/radio-group"
 import { Textarea } from "@/registry/aqua/ui/textarea"
 import { IPodDemo } from "@/components/ipod-demo"
@@ -114,6 +115,27 @@ export const DOCS: Record<string, Doc> = {
           <Button variant="secondary">honest</Button>
           <Button variant="destructive">yours</Button>
         </Preview>
+        <p>
+          Aqua is designed and built by{" "}
+          <a
+            href="https://duca.dev"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-[#1c5fb8] hover:underline"
+          >
+            Igor Duca
+          </a>{" "}
+          (
+          <a
+            href="https://x.com/ducaswtf"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#1c5fb8] hover:underline"
+          >
+            @ducaswtf
+          </a>
+          ).
+        </p>
       </>
     ),
   },
@@ -709,6 +731,39 @@ import { InfoIcon } from "lucide-react"
 <Label htmlFor="account-name">Account Name</Label>
 <Input id="account-name" />`}
         />
+      </>
+    ),
+  },
+  loader: {
+    title: "Loader",
+    description:
+      "The twelve-spoke spinner, ticking around in steps like the original.",
+    body: (
+      <>
+        <Preview>
+          <div className="flex items-center gap-8">
+            <Loader className="size-4" />
+            <Loader />
+            <Loader className="size-10" />
+            <div className="flex items-center gap-2 text-[13px] text-[#5a6069]">
+              <Loader className="size-4" /> Connecting to iDisk&hellip;
+            </div>
+          </div>
+        </Preview>
+        <InstallCommand name="loader" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Loader } from "@/components/ui/loader"
+
+<Loader />
+<Loader className="size-4 text-white" />`}
+        />
+        <p>
+          The spokes tick around in twelve discrete steps, the way the original
+          spinner did — no smooth rotation. Size and color come from{" "}
+          <code>className</code> (<code>currentColor</code> fills the spokes),
+          and it holds still under <code>prefers-reduced-motion</code>.
+        </p>
       </>
     ),
   },

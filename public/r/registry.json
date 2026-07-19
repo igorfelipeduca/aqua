@@ -158,6 +158,18 @@
       ]
     },
     {
+      "name": "loader",
+      "type": "registry:ui",
+      "title": "Loader",
+      "description": "The twelve-spoke spinner, ticking around in steps like the original.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/loader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "cursor",
       "type": "registry:ui",
       "title": "Cursor",
