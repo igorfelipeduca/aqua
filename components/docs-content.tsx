@@ -425,7 +425,8 @@ import { InfoIcon } from "lucide-react"
         <p>
           The three cursors are inline SVG data URIs: the black arrow with its
           white outline, the white pointing hand for links, and a seriffed
-          I-beam for text fields. No image assets, and the native cursor stays
+          I-beam over selectable text and text fields. No image assets, and the
+          native cursor stays
           as a fallback. The wrapper renders with{" "}
           <code>display:&nbsp;contents</code>, so it adds no box to your
           layout.

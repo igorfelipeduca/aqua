@@ -18,6 +18,7 @@ const IBEAM = cursorValue(IBEAM_SVG, 12, 12, "text")
 
 const CURSOR_CSS = `
 [data-aqua-cursor], [data-aqua-cursor] * { cursor: ${ARROW}; }
+[data-aqua-cursor] :where(p, h1, h2, h3, h4, h5, h6, li, dt, dd, blockquote, pre, code, td, th, figcaption, caption, span, em, strong, small, mark, sub, sup):not(:where(a, button, [role="button"], label, summary, select) *) { cursor: ${IBEAM}; }
 [data-aqua-cursor] a, [data-aqua-cursor] a * { cursor: ${HAND}; }
 [data-aqua-cursor] input, [data-aqua-cursor] textarea, [data-aqua-cursor] [contenteditable] { cursor: ${IBEAM}; }
 [data-aqua-cursor] input[type="checkbox"], [data-aqua-cursor] input[type="radio"], [data-aqua-cursor] input[type="range"], [data-aqua-cursor] input[type="color"], [data-aqua-cursor] input[type="button"], [data-aqua-cursor] input[type="submit"] { cursor: ${ARROW}; }
