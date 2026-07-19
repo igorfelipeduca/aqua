@@ -28,10 +28,10 @@ const THEMES = [
 
 const chipClass = (active: boolean) =>
   cn(
-    "flex items-center gap-2 rounded-full border px-3 py-1 text-[13px] transition-[filter] hover:brightness-103",
+    "relative flex items-center gap-2 overflow-hidden rounded-full border px-3.5 py-1 text-[13px] transition-[filter] before:pointer-events-none before:absolute before:left-[7%] before:right-[7%] before:top-[2px] before:h-[46%] before:rounded-full before:bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.1))] before:content-[''] hover:brightness-103 active:translate-y-px active:brightness-95",
     active
-      ? "border-[var(--aqua-edge,#1c5fb8)] bg-[#e7f0fb] font-semibold text-[var(--aqua-edge,#1c5fb8)]"
-      : "border-[#aeb3bc] bg-white text-[#3a3f47]"
+      ? "border-[var(--aqua-edge,#1c5fb8)] bg-[linear-gradient(180deg,var(--aqua-gel-hi,#a8d0f7)_0%,var(--aqua-gel-mid,#4a90ec)_50%,var(--aqua-gel-deep,#2a6fd0)_51%,var(--aqua-gel-light,#6aabf3)_100%)] font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] [text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]"
+      : "border-[#aeb3bc] bg-[linear-gradient(180deg,#fdfdfe_0%,#e4e7ec_48%,#d3d7de_52%,#eceef2_100%)] text-[#3a3f47] shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_2px_rgba(20,60,130,0.2)] [text-shadow:0_1px_0_rgba(255,255,255,0.8)]"
   )
 
 export function ThemePicker() {
@@ -61,8 +61,10 @@ export function ThemePicker() {
             className={chipClass(option.accent === accent)}
           >
             <span
-              className="size-3 rounded-full border border-black/20"
-              style={{ background: option.accent }}
+              className="size-3 rounded-full border border-black/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]"
+              style={{
+                background: `linear-gradient(180deg, color-mix(in oklab, ${option.accent} 55%, white), ${option.accent} 60%)`,
+              }}
             />
             {option.name}
           </button>
