@@ -133,13 +133,6 @@ export const DOCS: Record<string, Doc> = {
           <code>color-mix()</code>. Try it live:
         </p>
         <ThemePicker />
-        <p>To retheme your whole app, override one variable:</p>
-        <CodeBlock
-          lang="css"
-          code={`:root {
-  --aqua-accent: #7d8694; /* Graphite, like the real System Preferences option */
-}`}
-        />
         <p>
           It also works scoped: set the variable on any element and everything
           inside picks it up.

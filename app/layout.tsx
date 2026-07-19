@@ -13,8 +13,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var a=localStorage.getItem("aqua-accent");if(a)document.documentElement.style.setProperty("--aqua-accent",a)}catch(e){}`,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

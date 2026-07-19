@@ -28,7 +28,7 @@ export function DocsSidebar() {
                     className={cn(
                       "block rounded-md px-3 py-1 text-[13px] transition-colors",
                       active
-                        ? "bg-[linear-gradient(180deg,#7db9f5_0%,#3c86e4_50%,#2668c4_51%,#5da3ef_100%)] font-semibold text-white [text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]"
+                        ? "bg-[linear-gradient(180deg,var(--aqua-gel-hi,#7db9f5)_0%,var(--aqua-gel-mid,#3c86e4)_50%,var(--aqua-gel-deep,#2668c4)_51%,var(--aqua-gel-light,#5da3ef)_100%)] font-semibold text-white [text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]"
                         : "text-[#3a3f47] hover:bg-white/60"
                     )}
                   >

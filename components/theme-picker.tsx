@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/aqua/ui/button"
@@ -15,16 +15,40 @@ import {
   TabsTrigger,
 } from "@/registry/aqua/ui/tabs"
 
+const STORAGE_KEY = "aqua-accent"
+const DEFAULT_ACCENT = "#2f7de0"
+
 const THEMES = [
-  { name: "Aqua", accent: "#2f7de0" },
+  { name: "Aqua", accent: DEFAULT_ACCENT },
   { name: "Graphite", accent: "#7d8694" },
   { name: "Sunset", accent: "#e0742f" },
   { name: "Lime", accent: "#58b52f" },
   { name: "Strawberry", accent: "#e02f6b" },
 ]
 
+const chipClass = (active: boolean) =>
+  cn(
+    "flex items-center gap-2 rounded-full border px-3 py-1 text-[13px] transition-[filter] hover:brightness-103",
+    active
+      ? "border-[var(--aqua-edge,#1c5fb8)] bg-[#e7f0fb] font-semibold text-[var(--aqua-edge,#1c5fb8)]"
+      : "border-[#aeb3bc] bg-white text-[#3a3f47]"
+  )
+
 export function ThemePicker() {
-  const [theme, setTheme] = useState(THEMES[0])
+  const [accent, setAccent] = useState(DEFAULT_ACCENT)
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) setAccent(saved)
+  }, [])
+
+  const apply = (color: string) => {
+    setAccent(color)
+    document.documentElement.style.setProperty("--aqua-accent", color)
+    localStorage.setItem(STORAGE_KEY, color)
+  }
+
+  const isPreset = THEMES.some((option) => option.accent === accent)
 
   return (
     <div className="flex flex-col gap-4">
@@ -33,13 +57,8 @@ export function ThemePicker() {
           <button
             key={option.name}
             type="button"
-            onClick={() => setTheme(option)}
-            className={cn(
-              "flex items-center gap-2 rounded-full border px-3 py-1 text-[13px] transition-[filter] hover:brightness-103",
-              option.name === theme.name
-                ? "border-[#1c5fb8] bg-[#e7f0fb] font-semibold text-[#1c5fb8]"
-                : "border-[#aeb3bc] bg-white text-[#3a3f47]"
-            )}
+            onClick={() => apply(option.accent)}
+            className={chipClass(option.accent === accent)}
           >
             <span
               className="size-3 rounded-full border border-black/20"
@@ -48,12 +67,19 @@ export function ThemePicker() {
             {option.name}
           </button>
         ))}
+        <label className={cn(chipClass(!isPreset), "cursor-pointer")}>
+          <input
+            type="color"
+            value={accent}
+            onChange={(event) => apply(event.target.value)}
+            aria-label="Custom accent color"
+            className="size-3 cursor-pointer appearance-none rounded-full border border-black/20 bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0"
+          />
+          Custom
+        </label>
       </div>
 
-      <div
-        style={{ "--aqua-accent": theme.accent } as React.CSSProperties}
-        className="flex flex-col items-center gap-6 rounded-xl border border-[#aeb3bc] bg-white p-10 shadow-[0_2px_10px_rgba(20,30,50,0.08)]"
-      >
+      <div className="flex flex-col items-center gap-6 rounded-xl border border-[#aeb3bc] bg-white p-10 shadow-[0_2px_10px_rgba(20,30,50,0.08)]">
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button>default</Button>
           <Button size="sm">small</Button>
@@ -78,6 +104,20 @@ export function ThemePicker() {
           <Progress value={62} />
           <Slider defaultValue={[62]} />
         </div>
+      </div>
+
+      <p className="text-sm text-muted-foreground">
+        The color applies to the whole site and sticks around; it&apos;s saved
+        in your browser. In your own app it&apos;s one line:
+      </p>
+      <div className="overflow-x-auto rounded-xl border border-[#aeb3bc] bg-white p-5 font-mono text-[13px] leading-6 shadow-[0_2px_10px_rgba(20,30,50,0.08)]">
+        <pre>
+          {`:root {\n  --aqua-accent: `}
+          <span className="font-semibold" style={{ color: accent }}>
+            {accent}
+          </span>
+          {`;\n}`}
+        </pre>
       </div>
     </div>
   )
