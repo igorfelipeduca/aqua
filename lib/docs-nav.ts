@@ -28,6 +28,7 @@ export const DOCS_NAV: DocsNavSection[] = [
       { title: "Dialog", slug: "dialog" },
       { title: "Input", slug: "input" },
       { title: "Progress", slug: "progress" },
+      { title: "Select", slug: "select" },
       { title: "Slider", slug: "slider" },
       { title: "Switch", slug: "switch" },
       { title: "Tabs", slug: "tabs" },

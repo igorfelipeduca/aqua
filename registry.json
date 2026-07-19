@@ -125,6 +125,20 @@
       ]
     },
     {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "The Aqua popup button: glossy capsule with a gel arrow box, menu with gel highlight.",
+      "dependencies": ["@radix-ui/react-select", "lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",

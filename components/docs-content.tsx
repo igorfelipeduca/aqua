@@ -27,6 +27,15 @@ import {
 } from "@/registry/aqua/ui/dialog"
 import { Input } from "@/registry/aqua/ui/input"
 import { Progress } from "@/registry/aqua/ui/progress"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/aqua/ui/select"
 import { Slider } from "@/registry/aqua/ui/slider"
 import { Switch } from "@/registry/aqua/ui/switch"
 import {
@@ -434,6 +443,59 @@ export const DOCS: Record<string, Doc> = {
           The stripes march to the right while work is in progress, and stand
           still under <code>prefers-reduced-motion</code>.
         </p>
+      </>
+    ),
+  },
+  select: {
+    title: "Select",
+    description:
+      "The Aqua popup button: glossy capsule with a gel arrow box, menu with gel highlight.",
+    body: (
+      <>
+        <Preview>
+          <Select defaultValue="aqua">
+            <SelectTrigger>
+              <SelectValue placeholder="Appearance" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Appearance</SelectLabel>
+                <SelectItem value="aqua">Blue</SelectItem>
+                <SelectItem value="graphite">Graphite</SelectItem>
+              </SelectGroup>
+              <SelectGroup>
+                <SelectLabel>Highlight Color</SelectLabel>
+                <SelectItem value="gold">Gold</SelectItem>
+                <SelectItem value="lime">Lime</SelectItem>
+                <SelectItem value="strawberry">Strawberry</SelectItem>
+                <SelectItem value="tangerine" disabled>
+                  Tangerine (requires 10.4)
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Preview>
+        <InstallCommand name="select" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+<Select defaultValue="aqua">
+  <SelectTrigger>
+    <SelectValue placeholder="Appearance" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="aqua">Blue</SelectItem>
+    <SelectItem value="graphite">Graphite</SelectItem>
+  </SelectContent>
+</Select>`}
+        />
       </>
     ),
   },
