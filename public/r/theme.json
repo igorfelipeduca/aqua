@@ -28,5 +28,18 @@
       "ring": "#6cb0f7"
     }
   },
+  "css": {
+    ":root": {
+      "--aqua-accent": "#2f7de0"
+    },
+    "*, *::before, *::after": {
+      "--aqua-gel-hi": "color-mix(in oklab, var(--aqua-accent) 38%, white)",
+      "--aqua-gel-light": "color-mix(in oklab, var(--aqua-accent) 62%, white)",
+      "--aqua-gel-mid": "color-mix(in oklab, var(--aqua-accent) 90%, white)",
+      "--aqua-gel-deep": "color-mix(in oklab, var(--aqua-accent) 85%, black)",
+      "--aqua-edge": "color-mix(in oklab, var(--aqua-accent) 72%, black)",
+      "--aqua-ring": "color-mix(in oklab, var(--aqua-accent) 55%, white)"
+    }
+  },
   "type": "registry:theme"
 }

@@ -13,7 +13,7 @@ function Switch({
     <SwitchPrimitive.Root
       data-slot="switch"
       className={cn(
-        "inline-flex h-[24px] w-[44px] shrink-0 items-center rounded-full border border-[#8b909a] bg-[linear-gradient(180deg,#c9ccd1_0%,#dfe2e6_60%,#eceef2_100%)] shadow-[inset_0_2px_3px_rgba(20,30,50,0.25)] outline-none transition-[background,filter] focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:border-[#1c5fb8] data-[state=checked]:bg-[linear-gradient(180deg,#2a6fd0_0%,#4a90ec_55%,#a8d0f7_100%)] data-[state=checked]:shadow-[inset_0_2px_3px_rgba(10,40,90,0.35)]",
+        "inline-flex h-[24px] w-[44px] shrink-0 items-center rounded-full border border-[#8b909a] bg-[linear-gradient(180deg,#c9ccd1_0%,#dfe2e6_60%,#eceef2_100%)] shadow-[inset_0_2px_3px_rgba(20,30,50,0.25)] outline-none transition-[background,filter] focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:border-[var(--aqua-edge,#1c5fb8)] data-[state=checked]:bg-[linear-gradient(180deg,var(--aqua-gel-deep,#2a6fd0)_0%,var(--aqua-gel-mid,#4a90ec)_55%,var(--aqua-gel-hi,#a8d0f7)_100%)] data-[state=checked]:shadow-[inset_0_2px_3px_rgba(10,40,90,0.35)]",
         className
       )}
       {...props}

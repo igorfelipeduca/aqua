@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Link from "next/link"
 
 import { Button } from "@/registry/aqua/ui/button"
@@ -60,9 +60,56 @@ const MAILBOXES = [
 
 export default function MailDemo() {
   const [selected, setSelected] = useState(0)
+  const [query, setQuery] = useState("")
+  const [composing, setComposing] = useState(false)
+  const [composePos, setComposePos] = useState({ x: 0, y: 0 })
+  const dragRef = useRef<{
+    startX: number
+    startY: number
+    baseX: number
+    baseY: number
+  } | null>(null)
 
-  const message = MESSAGES[selected]
-  const paragraphs = message.body.split("\n\n")
+  const openCompose = () => {
+    setComposePos({ x: 0, y: 0 })
+    setComposing(true)
+  }
+
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if ((event.target as HTMLElement).closest("button")) return
+    dragRef.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      baseX: composePos.x,
+      baseY: composePos.y,
+    }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const moveDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current
+    if (!drag) return
+    setComposePos({
+      x: drag.baseX + event.clientX - drag.startX,
+      y: drag.baseY + event.clientY - drag.startY,
+    })
+  }
+
+  const endDrag = () => {
+    dragRef.current = null
+  }
+
+  const needle = query.trim().toLowerCase()
+  const visible = MESSAGES.map((msg, index) => ({ msg, index })).filter(
+    ({ msg }) =>
+      needle === "" ||
+      `${msg.from} ${msg.subject} ${msg.body}`.toLowerCase().includes(needle)
+  )
+  const selectedVisible = visible.some(({ index }) => index === selected)
+  const shownEntry = selectedVisible
+    ? { msg: MESSAGES[selected], index: selected }
+    : visible[0]
+  const paragraphs = shownEntry ? shownEntry.msg.body.split("\n\n") : []
 
   return (
     <div className="flex h-svh flex-col">
@@ -76,7 +123,7 @@ export default function MailDemo() {
           <Button variant="secondary" size="sm">
             Get Mail
           </Button>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" onClick={openCompose}>
             New Message
           </Button>
           <Button variant="secondary" size="sm">
@@ -85,7 +132,12 @@ export default function MailDemo() {
           <Button variant="secondary" size="sm">
             Delete
           </Button>
-          <Input placeholder="Search" className="ml-auto h-7 max-w-44 rounded-full" />
+          <Input
+            placeholder="Search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            className="ml-auto h-7 max-w-44 rounded-full"
+          />
         </div>
 
         <div className="flex min-h-0 flex-1 border-t border-[#8b909a] bg-[#f4f5f8] text-[13px]">
@@ -129,16 +181,16 @@ export default function MailDemo() {
                 <span className="flex-1">Subject</span>
                 <span className="w-28 shrink-0 text-right">Date Received</span>
               </div>
-              {MESSAGES.map((msg, i) => {
+              {visible.map(({ msg, index }, i) => {
                 const rowTint = i % 2 === 0 ? "bg-white" : "bg-[#f0f4fa]"
 
                 return (
                   <button
                     key={msg.subject}
                     type="button"
-                    onClick={() => setSelected(i)}
+                    onClick={() => setSelected(index)}
                     className={
-                      i === selected
+                      shownEntry && index === shownEntry.index
                         ? "flex w-full bg-[linear-gradient(180deg,#7db9f5_0%,#3c86e4_50%,#2668c4_51%,#5da3ef_100%)] px-3 py-1.5 text-left text-white [text-shadow:0_-1px_1px_rgba(10,40,90,0.4)]"
                         : `flex w-full ${rowTint} px-3 py-1.5 text-left text-[#33383f] hover:bg-[#e7f0fb]`
                     }
@@ -153,26 +205,101 @@ export default function MailDemo() {
                   </button>
                 )
               })}
+              {visible.length === 0 ? (
+                <p className="px-3 py-6 text-center text-[#7a8089]">
+                  No messages found for &ldquo;{query}&rdquo;
+                </p>
+              ) : null}
             </div>
 
             <div className="flex-1 overflow-y-auto bg-white">
-              <div className="border-b border-[#dcdfe4] px-5 py-3">
-                <p className="text-[15px] font-bold">{message.subject}</p>
-                <p className="text-[#7a8089]">
-                  {message.from} &lt;{message.address}&gt;
+              {shownEntry ? (
+                <>
+                  <div className="border-b border-[#dcdfe4] px-5 py-3">
+                    <p className="text-[15px] font-bold">
+                      {shownEntry.msg.subject}
+                    </p>
+                    <p className="text-[#7a8089]">
+                      {shownEntry.msg.from} &lt;{shownEntry.msg.address}&gt;
+                    </p>
+                    <p className="text-[#7a8089]">
+                      To: Igor Duca &lt;igor@duca.dev&gt;
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-3 px-5 py-4 leading-6">
+                    {paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="whitespace-pre-line">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p className="px-5 py-10 text-center text-[#7a8089]">
+                  No message selected
                 </p>
-                <p className="text-[#7a8089]">To: Igor Duca &lt;igor@duca.dev&gt;</p>
-              </div>
-              <div className="flex flex-col gap-3 px-5 py-4 leading-6">
-                {paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="whitespace-pre-line">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              )}
             </div>
           </div>
         </div>
+        {composing ? (
+          <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-6">
+            <Window
+              className="pointer-events-auto w-full max-w-lg"
+              style={{
+                transform: `translate(${composePos.x}px, ${composePos.y}px)`,
+              }}
+            >
+              <WindowTitlebar
+                className="cursor-move touch-none select-none"
+                onPointerDown={startDrag}
+                onPointerMove={moveDrag}
+                onPointerUp={endDrag}
+                onPointerCancel={endDrag}
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  className="z-10 transition-[filter] hover:brightness-90"
+                  onClick={() => setComposing(false)}
+                >
+                  <TrafficLights />
+                </button>
+                <WindowTitle>New Message</WindowTitle>
+              </WindowTitlebar>
+              <div className="flex flex-col gap-2.5 bg-[#f4f5f8] p-4 text-[13px]">
+                <label className="flex items-center gap-2">
+                  <span className="w-14 text-right text-[#7a8089]">To:</span>
+                  <Input defaultValue="sjobs@apple.com" className="h-7" />
+                </label>
+                <label className="flex items-center gap-2">
+                  <span className="w-14 text-right text-[#7a8089]">Subject:</span>
+                  <Input defaultValue="Re: Focus" className="h-7" />
+                </label>
+                <textarea
+                  rows={9}
+                  defaultValue={
+                    "Steve,\n\nTwelve components shipped. Site deployed next.\n\nIgor"
+                  }
+                  className="resize-none rounded-lg border border-[#9599a1] bg-white px-3 py-2 shadow-[inset_0_2px_3px_rgba(20,30,50,0.15)] outline-none focus-visible:border-[#6cb0f7] focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70"
+                />
+                <div className="flex justify-end gap-2.5">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => setComposing(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button size="sm" onClick={() => setComposing(false)}>
+                    Send
+                  </Button>
+                </div>
+              </div>
+            </Window>
+          </div>
+        ) : null}
+
         <div className="flex items-center justify-between border-t border-[#b6bcc6] bg-[#dde4ed] px-4 py-1 text-[11px] text-[#7a8089]">
           <span>Built entirely from @aqua registry components.</span>
           <Link href="/docs/introduction" className="text-[#1c5fb8] hover:underline">

@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { CodeBlock } from "@/components/code-block"
 import { ComponentDemo } from "@/components/component-demo"
 import { Button } from "@/registry/aqua/ui/button"
 import {
@@ -53,13 +54,14 @@ export default function Home() {
           Point your components.json at the registry, then add anything under
           the @aqua namespace.
         </p>
-        <pre className="overflow-x-auto rounded-xl border border-[#aeb3bc] bg-white p-5 font-mono text-[13px] leading-6 text-[#3a3f47] shadow-[0_2px_10px_rgba(20,30,50,0.08)]">
-          {`{
+        <CodeBlock
+          lang="json"
+          code={`{
   "registries": {
     "@aqua": "https://aqua.duca.dev/r/{name}.json"
   }
 }`}
-        </pre>
+        />
       </section>
 
       <ComponentDemo
@@ -120,16 +122,27 @@ export default function Home() {
         </Tooltip>
       </ComponentDemo>
 
-      <footer className="flex items-center justify-between border-t border-[#c9ccd1] pt-6 text-xs text-muted-foreground">
+      <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-[#c9ccd1] pt-6 text-xs text-muted-foreground">
+        <span>
+          Made by{" "}
+          <a
+            className="font-semibold text-[#1c5fb8] hover:underline"
+            href="https://duca.dev"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Igor Duca
+          </a>{" "}
+          <a
+            className="text-[#1c5fb8] hover:underline"
+            href="https://x.com/ducaswtf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @ducaswtf
+          </a>
+        </span>
         <span>© 2026 igor duca</span>
-        <a
-          className="hover:text-[#1c5fb8]"
-          href="https://duca.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          duca.dev
-        </a>
       </footer>
     </div>
   )

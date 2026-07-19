@@ -35,7 +35,7 @@ function DockItem({
       {...props}
     >
       {label ? (
-        <span className="pointer-events-none absolute -top-[34px] whitespace-nowrap rounded-full bg-[rgba(40,45,55,0.85)] px-3 py-1 text-xs text-white opacity-0 shadow-[0_2px_6px_rgba(20,30,50,0.3)] transition-opacity group-hover:opacity-100">
+        <span className="pointer-events-none absolute -top-[30px] whitespace-nowrap text-[13px] font-semibold text-white opacity-0 transition-opacity [text-shadow:0_1px_2px_rgba(0,0,0,0.9),0_0_5px_rgba(0,0,0,0.65),0_0_10px_rgba(0,0,0,0.45)] group-hover:opacity-100">
           {label}
         </span>
       ) : null}

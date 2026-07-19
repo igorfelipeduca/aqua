@@ -1,8 +1,12 @@
+import Image from "next/image"
+
 import { CodeBlock, InstallCommand } from "@/components/code-block"
+import { ThemePicker } from "@/components/theme-picker"
+import { Badge } from "@/registry/aqua/ui/badge"
 import { Button } from "@/registry/aqua/ui/button"
 import { ChatBubble, ChatPanel } from "@/registry/aqua/ui/chat-bubble"
 import { Checkbox } from "@/registry/aqua/ui/checkbox"
-import { Dock, DockIcon, DockItem } from "@/registry/aqua/ui/dock"
+import { Dock, DockItem } from "@/registry/aqua/ui/dock"
 import {
   TrafficLights,
   Window,
@@ -12,6 +16,7 @@ import {
 } from "@/registry/aqua/ui/window"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -111,7 +116,7 @@ export const DOCS: Record<string, Doc> = {
   theming: {
     title: "Theming",
     description:
-      "One theme item maps the Aqua palette onto the standard shadcn tokens.",
+      "Every gel surface derives from a single accent variable. Change one line, retint the whole kit.",
     body: (
       <>
         <p>
@@ -121,6 +126,24 @@ export const DOCS: Record<string, Doc> = {
           Components you already have keep working; they just put on the suit.
         </p>
         <InstallCommand name="theme" />
+        <SectionTitle>Accent color</SectionTitle>
+        <p>
+          Buttons, tabs, checkboxes, switches, sliders and progress bars all
+          mix their gradients from <code>--aqua-accent</code> with{" "}
+          <code>color-mix()</code>. Try it live:
+        </p>
+        <ThemePicker />
+        <p>To retheme your whole app, override one variable:</p>
+        <CodeBlock
+          lang="css"
+          code={`:root {
+  --aqua-accent: #7d8694; /* Graphite, like the real System Preferences option */
+}`}
+        />
+        <p>
+          It also works scoped: set the variable on any element and everything
+          inside picks it up.
+        </p>
         <SectionTitle>Signature surfaces</SectionTitle>
         <p>
           The era look leans on a few recurring textures, all done in plain CSS
@@ -153,6 +176,27 @@ export const DOCS: Record<string, Doc> = {
 <Button>save</Button>
 <Button variant="secondary">cancel</Button>
 <Button variant="destructive" size="sm">delete</Button>`}
+        />
+      </>
+    ),
+  },
+  badge: {
+    title: "Badge",
+    description: "Tinted capsule label in blue, glossy gray and red.",
+    body: (
+      <>
+        <Preview>
+          <Badge>install</Badge>
+          <Badge variant="secondary">software engineer</Badge>
+          <Badge variant="destructive">deprecated</Badge>
+        </Preview>
+        <InstallCommand name="badge" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Badge } from "@/components/ui/badge"
+
+<Badge>install</Badge>
+<Badge variant="secondary">software engineer</Badge>`}
         />
       </>
     ),
@@ -239,12 +283,16 @@ export const DOCS: Record<string, Doc> = {
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
-                <Button variant="secondary" size="sm">
-                  Cancel
-                </Button>
-                <Button variant="destructive" size="sm">
-                  Empty Trash
-                </Button>
+                <DialogClose asChild>
+                  <Button variant="secondary" size="sm">
+                    Cancel
+                  </Button>
+                </DialogClose>
+                <DialogClose asChild>
+                  <Button variant="destructive" size="sm">
+                    Empty Trash
+                  </Button>
+                </DialogClose>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -289,22 +337,38 @@ export const DOCS: Record<string, Doc> = {
         <Preview>
           <Dock>
             <DockItem label="Finder" active>
-              <DockIcon>F</DockIcon>
+              <Image src="/icons/finder.png" alt="Finder" width={58} height={58} />
             </DockItem>
             <DockItem label="Mail" active>
-              <DockIcon className="bg-[linear-gradient(180deg,#cfd8e2_0%,#8fa3b8_55%,#6b809a_100%)]">
-                @
-              </DockIcon>
+              <Image src="/icons/mail.png" alt="Mail" width={58} height={58} />
             </DockItem>
-            <DockItem label="iTunes">
-              <DockIcon className="bg-[linear-gradient(180deg,#b9f6a5_0%,#56c93f_55%,#3fa12f_100%)]">
-                ♪
-              </DockIcon>
+            <DockItem label="Safari">
+              <Image src="/icons/safari.png" alt="Safari" width={58} height={58} />
+            </DockItem>
+            <DockItem label="iTunes" active>
+              <Image src="/icons/itunes.png" alt="iTunes" width={58} height={58} />
+            </DockItem>
+            <DockItem label="iChat">
+              <Image src="/icons/ichat.png" alt="iChat" width={58} height={58} />
+            </DockItem>
+            <DockItem label="GarageBand">
+              <Image
+                src="/icons/garageband.png"
+                alt="GarageBand"
+                width={58}
+                height={58}
+              />
+            </DockItem>
+            <DockItem label="System Preferences">
+              <Image
+                src="/icons/system-preferences.png"
+                alt="System Preferences"
+                width={58}
+                height={58}
+              />
             </DockItem>
             <DockItem label="Trash">
-              <DockIcon className="bg-[linear-gradient(180deg,#eceef2_0%,#c3c8cf_55%,#a9adb5_100%)] text-[#43484f] [text-shadow:0_1px_0_rgba(255,255,255,0.6)]">
-                T
-              </DockIcon>
+              <Image src="/icons/trash.png" alt="Trash" width={58} height={58} />
             </DockItem>
           </Dock>
         </Preview>
@@ -315,7 +379,7 @@ export const DOCS: Record<string, Doc> = {
 
 <Dock>
   <DockItem label="Finder" active>
-    <DockIcon>F</DockIcon>
+    <img src="/icons/finder.png" alt="Finder" width={58} height={58} />
   </DockItem>
   <DockItem label="iTunes">
     <DockIcon>♪</DockIcon>
@@ -323,9 +387,10 @@ export const DOCS: Record<string, Doc> = {
 </Dock>`}
         />
         <p>
-          <code>DockIcon</code> takes any content: a monogram, an{" "}
-          <code>&lt;img&gt;</code>, an icon. Tint it by overriding the
-          background gradient. <code>active</code> shows the running-app dot.
+          <code>DockItem</code> takes any icon content. Era app icons are
+          freeform artwork, so drop an <code>&lt;img&gt;</code> straight in;{" "}
+          <code>DockIcon</code> is the glossy rounded tile for when you
+          don&apos;t have artwork. <code>active</code> shows the running-app dot.
         </p>
       </>
     ),

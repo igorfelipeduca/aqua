@@ -21,6 +21,7 @@ export const DOCS_NAV: DocsNavSection[] = [
   {
     label: "Components",
     items: [
+      { title: "Badge", slug: "badge" },
       { title: "Button", slug: "button" },
       { title: "Checkbox", slug: "checkbox" },
       { title: "Dialog", slug: "dialog" },

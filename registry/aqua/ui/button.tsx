@@ -5,12 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "relative inline-flex shrink-0 select-none items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full font-semibold tracking-[-0.01em] outline-none transition-[filter] before:pointer-events-none before:absolute before:left-[7%] before:right-[7%] before:top-[2px] before:h-[46%] before:rounded-full before:bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.08))] before:content-[''] hover:brightness-105 focus-visible:ring-[3px] focus-visible:ring-[#6cb0f7]/70 active:translate-y-px active:brightness-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "relative inline-flex shrink-0 select-none items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full font-semibold tracking-[-0.01em] outline-none transition-[filter] before:pointer-events-none before:absolute before:left-[7%] before:right-[7%] before:top-[2px] before:h-[46%] before:rounded-full before:bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.08))] before:content-[''] hover:brightness-105 focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70 active:translate-y-px active:brightness-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "border border-[#1c5fb8] bg-[linear-gradient(180deg,#b9dcff_0%,#6cb0f7_42%,#2f7de0_50%,#4d9cf2_78%,#9fd7ff_100%)] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_-3px_7px_rgba(255,255,255,0.6),0_1px_3px_rgba(20,60,130,0.35)] [text-shadow:0_-1px_1px_rgba(10,40,90,0.45)]",
+          "border border-[var(--aqua-edge,#1c5fb8)] bg-[linear-gradient(180deg,var(--aqua-gel-hi,#b9dcff)_0%,var(--aqua-gel-light,#6cb0f7)_42%,var(--aqua-accent,#2f7de0)_50%,var(--aqua-gel-light,#4d9cf2)_78%,var(--aqua-gel-hi,#9fd7ff)_100%)] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_-3px_7px_rgba(255,255,255,0.6),0_1px_3px_rgba(20,60,130,0.35)] [text-shadow:0_-1px_1px_rgba(10,40,90,0.45)]",
         secondary:
           "border border-[#aeb3bc] bg-[linear-gradient(180deg,#fdfdfe_0%,#e4e7ec_48%,#d3d7de_52%,#eceef2_100%)] text-[#3a3f47] shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_2px_rgba(20,60,130,0.2)] before:opacity-60 [text-shadow:0_1px_0_rgba(255,255,255,0.8)]",
         destructive:

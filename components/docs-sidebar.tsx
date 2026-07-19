@@ -40,6 +40,26 @@ export function DocsSidebar() {
           </ul>
         </div>
       ))}
+      <div className="mt-8 border-t border-[#b6bcc6] px-3 pt-3 text-[11px] leading-5 text-[#7a8089]">
+        Made by{" "}
+        <a
+          href="https://duca.dev"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-[#1c5fb8] hover:underline"
+        >
+          Igor Duca
+        </a>
+        <br />
+        <a
+          href="https://x.com/ducaswtf"
+          target="_blank"
+          rel="noreferrer"
+          className="text-[#1c5fb8] hover:underline"
+        >
+          @ducaswtf
+        </a>
+      </div>
     </aside>
   )
 }
