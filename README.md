@@ -72,6 +72,12 @@ The gel gradients, edges and focus rings are derived with `color-mix`, so one li
 
 Aqua ships [`/llms.txt`](https://aqua.duca.dev/llms.txt) and [`/llms-full.txt`](https://aqua.duca.dev/llms-full.txt) with complete setup and per-component usage, and every docs page has a **Copy AI prompt** button that produces a ready-to-paste instruction for your agent of choice.
 
+There is also an installable [Agent Skill](skills/aqua/SKILL.md) that teaches any skills-compatible agent (Claude Code, Cursor, Codex, Windsurf and others) how to set up and use Aqua:
+
+```bash
+npx skills add igorfelipeduca/aqua
+```
+
 ## Development
 
 This repository is the registry and its documentation site (Next.js 15, Tailwind v4, Bun).
