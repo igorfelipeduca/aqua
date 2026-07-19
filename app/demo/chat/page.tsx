@@ -5,6 +5,8 @@ import Link from "next/link"
 import { useChat } from "@ai-sdk/react"
 import type { UIMessage } from "ai"
 
+import { playReceiveSound, playSendSound } from "@/lib/chat-sounds"
+
 import { Button } from "@/registry/aqua/ui/button"
 import { ChatBubble } from "@/registry/aqua/ui/chat-bubble"
 import { Input } from "@/registry/aqua/ui/input"
@@ -48,6 +50,7 @@ function messageText(message: UIMessage) {
 export default function ChatDemo() {
   const { messages, sendMessage, status, error } = useChat({
     messages: OPENING,
+    onFinish: () => playReceiveSound(),
   })
   const [draft, setDraft] = useState("")
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -63,6 +66,7 @@ export default function ChatDemo() {
     const text = draft.trim()
     if (!text || busy) return
     setDraft("")
+    playSendSound()
     sendMessage({ text })
   }
 
