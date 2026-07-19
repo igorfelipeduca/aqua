@@ -175,6 +175,18 @@
       ]
     },
     {
+      "name": "ipod",
+      "type": "registry:ui",
+      "title": "iPod",
+      "description": "The classic iPod: white shell, LCD screen and a working click wheel.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/ipod.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "window",
       "type": "registry:ui",
       "title": "Window",

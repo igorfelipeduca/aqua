@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { CodeBlock, InstallCommand } from "@/components/code-block"
+import { IPodDemo } from "@/components/ipod-demo"
 import { ThemePicker } from "@/components/theme-picker"
 import { Badge } from "@/registry/aqua/ui/badge"
 import { Button } from "@/registry/aqua/ui/button"
@@ -525,6 +526,42 @@ export const DOCS: Record<string, Doc> = {
   <TabsContent value="advanced">...</TabsContent>
 </Tabs>`}
         />
+      </>
+    ),
+  },
+  ipod: {
+    title: "iPod",
+    description:
+      "The classic iPod: white shell, LCD screen and a working click wheel.",
+    body: (
+      <>
+        <Preview>
+          <IPodDemo />
+        </Preview>
+        <InstallCommand name="ipod" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { ClickWheel, IPod, IPodHeader, IPodScreen } from "@/components/ui/ipod"
+
+<IPod>
+  <IPodScreen>
+    <IPodHeader>Now Playing</IPodHeader>
+    <div className="px-4 py-3 text-center text-[13px]">
+      <p className="font-bold">The American Dawn</p>
+      <p>Her</p>
+    </div>
+  </IPodScreen>
+  <ClickWheel
+    onPlayPause={togglePlayback}
+    onPrev={previousTrack}
+    onNext={nextTrack}
+  />
+</IPod>`}
+        />
+        <p>
+          The screen takes any content: menus, album art, a game of Brick.
+          Every wheel button and the center click accept a handler.
+        </p>
       </>
     ),
   },

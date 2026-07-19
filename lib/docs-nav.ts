@@ -42,6 +42,7 @@ export const DOCS_NAV: DocsNavSection[] = [
     items: [
       { title: "Chat Bubble", slug: "chat-bubble" },
       { title: "Dock", slug: "dock" },
+      { title: "iPod", slug: "ipod" },
       { title: "Window", slug: "window" },
     ],
   },
