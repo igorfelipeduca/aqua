@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation"
 import { DOCS_NAV } from "@/lib/docs-nav"
 import { cn } from "@/lib/utils"
 
-export function DocsSidebar() {
+export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname()
 
   return (
-    <aside className="sticky top-[37px] hidden h-[calc(100dvh-37px)] w-56 shrink-0 overflow-y-auto border-r border-[#b6bcc6] bg-[#dde4ed] px-3 py-4 md:block">
+    <>
       {DOCS_NAV.map((section) => (
         <div key={section.label} className="mb-5">
           <p className="px-3 pb-1 text-[11px] font-bold uppercase tracking-wide text-[#7a8089] [text-shadow:0_1px_0_rgba(255,255,255,0.7)]">
@@ -26,6 +26,7 @@ export function DocsSidebar() {
                   <Link
                     href={href}
                     target={item.external ? "_blank" : undefined}
+                    onClick={onNavigate}
                     className={cn(
                       "block rounded-md px-3 py-1 text-[13px] transition-colors",
                       active
@@ -61,6 +62,14 @@ export function DocsSidebar() {
           @ducaswtf
         </a>
       </div>
+    </>
+  )
+}
+
+export function DocsSidebar() {
+  return (
+    <aside className="sticky top-[37px] hidden h-[calc(100dvh-37px)] w-56 shrink-0 overflow-y-auto border-r border-[#b6bcc6] bg-[#dde4ed] px-3 py-4 md:block">
+      <SidebarNav />
     </aside>
   )
 }

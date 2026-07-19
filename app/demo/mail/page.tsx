@@ -120,28 +120,28 @@ export default function MailDemo() {
         </WindowTitlebar>
 
         <div className="flex items-center gap-2.5 px-4 pb-3 pt-0.5">
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
             Get Mail
           </Button>
           <Button variant="secondary" size="sm" onClick={openCompose}>
             New Message
           </Button>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
             Reply
           </Button>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
             Delete
           </Button>
           <Input
             placeholder="Search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="ml-auto h-7 max-w-44 rounded-full"
+            className="ml-auto h-7 max-w-32 rounded-full sm:max-w-44"
           />
         </div>
 
         <div className="flex min-h-0 flex-1 border-t border-[#8b909a] bg-[#f4f5f8] text-[13px]">
-          <aside className="w-44 shrink-0 overflow-y-auto border-r border-[#b6bcc6] bg-[#dde4ed] py-3">
+          <aside className="hidden w-44 shrink-0 overflow-y-auto border-r border-[#b6bcc6] bg-[#dde4ed] py-3 sm:block">
             <p className="px-4 pb-1 text-[11px] font-bold uppercase tracking-wide text-[#7a8089] [text-shadow:0_1px_0_rgba(255,255,255,0.7)]">
               Mailboxes
             </p>
@@ -177,9 +177,11 @@ export default function MailDemo() {
           <div className="flex min-w-0 flex-1 flex-col">
             <div className="h-[38%] min-h-[150px] overflow-y-auto border-b border-[#b6bcc6]">
               <div className="sticky top-0 flex border-b border-[#9599a1] bg-[linear-gradient(180deg,#fbfcfd_0%,#e8ebef_55%,#dcdfe4_100%)] px-3 py-1 text-[11px] font-bold text-[#43484f] [text-shadow:0_1px_0_rgba(255,255,255,0.7)]">
-                <span className="w-36 shrink-0">From</span>
+                <span className="w-24 shrink-0 sm:w-36">From</span>
                 <span className="flex-1">Subject</span>
-                <span className="w-28 shrink-0 text-right">Date Received</span>
+                <span className="hidden w-28 shrink-0 text-right sm:block">
+                  Date Received
+                </span>
               </div>
               {visible.map(({ msg, index }, i) => {
                 const rowTint = i % 2 === 0 ? "bg-white" : "bg-[#f0f4fa]"
@@ -195,11 +197,11 @@ export default function MailDemo() {
                         : `flex w-full ${rowTint} px-3 py-1.5 text-left text-[#33383f] hover:bg-[#e7f0fb]`
                     }
                   >
-                    <span className="w-36 shrink-0 truncate font-semibold">
+                    <span className="w-24 shrink-0 truncate font-semibold sm:w-36">
                       {msg.from}
                     </span>
                     <span className="flex-1 truncate">{msg.subject}</span>
-                    <span className="w-28 shrink-0 text-right text-[12px] opacity-80">
+                    <span className="hidden w-28 shrink-0 text-right text-[12px] opacity-80 sm:block">
                       {msg.date}
                     </span>
                   </button>

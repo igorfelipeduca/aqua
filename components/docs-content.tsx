@@ -73,7 +73,7 @@ import {
 
 function Preview({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-[220px] flex-wrap items-center justify-center gap-4 rounded-xl border border-[#aeb3bc] bg-white p-10 shadow-[0_2px_10px_rgba(20,30,50,0.08)]">
+    <div className="flex min-h-[220px] flex-wrap items-center justify-center gap-4 rounded-xl border border-[#aeb3bc] bg-white px-4 py-8 shadow-[0_2px_10px_rgba(20,30,50,0.08)] sm:p-10">
       {children}
     </div>
   )

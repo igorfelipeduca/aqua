@@ -100,17 +100,17 @@ export function CommandPalette() {
       <button
         type="button"
         onClick={openPalette}
-        className="ml-auto flex h-7 w-52 select-none items-center gap-2 rounded-full border border-[#9599a1] bg-white px-3 text-[12px] text-[#9aa0a8] shadow-[inset_0_2px_3px_rgba(20,30,50,0.12)] outline-none transition-[box-shadow] focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70"
+        className="ml-auto flex h-7 select-none items-center gap-2 rounded-full border border-[#9599a1] bg-white px-2.5 text-[12px] text-[#9aa0a8] shadow-[inset_0_2px_3px_rgba(20,30,50,0.12)] outline-none transition-[box-shadow] focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70 md:w-52 md:px-3"
       >
         <SearchIcon className="size-3.5 shrink-0" />
-        <span>Search</span>
-        <kbd className="ml-auto rounded-[4px] border border-[#c9ccd1] bg-[linear-gradient(180deg,#fdfdfe_0%,#eceef2_100%)] px-1.5 py-px font-sans text-[10px] text-[#7a8089] shadow-[0_1px_0_rgba(255,255,255,0.8)]">
+        <span className="hidden md:block">Search</span>
+        <kbd className="ml-auto hidden rounded-[4px] border border-[#c9ccd1] bg-[linear-gradient(180deg,#fdfdfe_0%,#eceef2_100%)] px-1.5 py-px font-sans text-[10px] text-[#7a8089] shadow-[0_1px_0_rgba(255,255,255,0.8)] md:block">
           &#8984;K
         </kbd>
       </button>
       {open ? (
         <div
-          className="fixed inset-0 z-[110] flex justify-center bg-black/25 pt-[16vh]"
+          className="fixed inset-0 z-[110] flex justify-center bg-black/25 px-4 pt-[12vh] md:pt-[16vh]"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setOpen(false)
           }}

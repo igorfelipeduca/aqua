@@ -26,7 +26,7 @@ export default function Home() {
           The classic Apple interface, rebuilt for shadcn/ui. Radix underneath,
           gloss on top. Your components, your code.
         </p>
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <Button asChild size="sm">
             <Link href="/docs/installation">get started</Link>
           </Button>
@@ -35,7 +35,7 @@ export default function Home() {
           </Button>
           <Button asChild variant="secondary" size="sm">
             <a
-              href="https://github.com/igorfelipeduca"
+              href="https://github.com/igorfelipeduca/aqua"
               target="_blank"
               rel="noreferrer"
             >

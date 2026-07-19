@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s — Aqua",
   },
   description:
-    "Glossy Mac OS X era components for shadcn/ui: gel buttons, pinstripes, brushed metal, the Dock and the iPod. Radix underneath, Aqua on top. Install with npx shadcn add @aqua.",
+    "Glossy Mac OS X era components for shadcn/ui: gel buttons, pinstripes, the Dock and the iPod. Install with npx shadcn add @aqua.",
   keywords: [
     "aqua",
     "mac os x",
