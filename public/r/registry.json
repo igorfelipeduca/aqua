@@ -141,6 +141,23 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Shiki-highlighted code card with an Aqua copy button.",
+      "dependencies": ["shiki", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/code-block.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/aqua/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "cursor",
       "type": "registry:ui",
       "title": "Cursor",

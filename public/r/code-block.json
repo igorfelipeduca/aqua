@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block",
+  "title": "Code Block",
+  "description": "Shiki-highlighted code card with an Aqua copy button.",
+  "dependencies": [
+    "shiki",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/aqua/ui/code-block.tsx",
+      "content": "import { codeToHtml } from \"shiki\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CopyButton } from \"@/registry/aqua/ui/copy-button\"\n\nexport async function CodeBlock({\n  code,\n  lang = \"tsx\",\n  theme = \"github-light\",\n  className,\n}: {\n  code: string\n  lang?: string\n  theme?: string\n  className?: string\n}) {\n  const html = await codeToHtml(code, { lang, theme })\n\n  return (\n    <div className={cn(\"relative\", className)}>\n      <div\n        className=\"overflow-x-auto rounded-xl border border-[#aeb3bc] bg-white shadow-[0_2px_10px_rgba(20,30,50,0.08)] [&_pre]:!bg-transparent [&_pre]:p-5 [&_pre]:font-mono [&_pre]:text-[13px] [&_pre]:leading-6\"\n        dangerouslySetInnerHTML={{ __html: html }}\n      />\n      <CopyButton text={code} className=\"absolute right-3 top-3\" />\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/aqua/ui/copy-button.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState } from \"react\"\nimport { CheckIcon, CopyIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport function CopyButton({\n  text,\n  className,\n}: {\n  text: string\n  className?: string\n}) {\n  const [copied, setCopied] = useState(false)\n  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)\n\n  useEffect(() => {\n    return () => {\n      if (timerRef.current) clearTimeout(timerRef.current)\n    }\n  }, [])\n\n  const copy = async () => {\n    await navigator.clipboard.writeText(text)\n    setCopied(true)\n    if (timerRef.current) clearTimeout(timerRef.current)\n    timerRef.current = setTimeout(() => setCopied(false), 2000)\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={copied ? \"Copied\" : \"Copy code\"}\n      className={cn(\n        \"inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-[#9599a1] bg-[linear-gradient(180deg,#fdfdfe_0%,#e4e7ec_48%,#d3d7de_52%,#eceef2_100%)] text-[#4a5058] shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_2px_rgba(20,30,50,0.2)] outline-none transition-[filter] hover:brightness-103 focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70 active:brightness-95\",\n        className\n      )}\n    >\n      {copied ? (\n        <CheckIcon className=\"size-3.5 text-[#2c8a2c]\" strokeWidth={3} />\n      ) : (\n        <CopyIcon className=\"size-3.5\" />\n      )}\n    </button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
