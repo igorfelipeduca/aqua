@@ -38,6 +38,7 @@ export const DOCS_NAV: DocsNavSection[] = [
       { title: "Switch", slug: "switch" },
       { title: "Tabs", slug: "tabs" },
       { title: "Textarea", slug: "textarea" },
+      { title: "Toast", slug: "toast" },
       { title: "Tooltip", slug: "tooltip" },
     ],
   },

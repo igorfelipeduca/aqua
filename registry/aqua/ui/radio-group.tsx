@@ -33,8 +33,10 @@ function RadioGroupItem({
     >
       <RadioGroupPrimitive.Indicator
         data-slot="radio-group-indicator"
-        className="size-[7px] rounded-full bg-white shadow-[0_1px_1px_rgba(10,40,90,0.45)]"
-      />
+        className="flex size-full items-center justify-center"
+      >
+        <span className="size-2 rounded-full bg-white shadow-[0_1px_1px_rgba(10,40,90,0.35)]" />
+      </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )
 }

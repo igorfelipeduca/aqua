@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { InfoIcon, OctagonXIcon, TriangleAlertIcon } from "lucide-react"
 
 import { CodeBlock, InstallCommand } from "@/components/code-block"
@@ -21,6 +22,7 @@ import { RadioGroup, RadioGroupItem } from "@/registry/aqua/ui/radio-group"
 import { Textarea } from "@/registry/aqua/ui/textarea"
 import { IPodDemo } from "@/components/ipod-demo"
 import { ThemePicker } from "@/components/theme-picker"
+import { ToastDemo } from "@/components/toast-demo"
 import { Badge } from "@/registry/aqua/ui/badge"
 import { Button } from "@/registry/aqua/ui/button"
 import { ChatBubble, ChatPanel } from "@/registry/aqua/ui/chat-bubble"
@@ -243,6 +245,14 @@ import { InfoIcon } from "lucide-react"
   <AlertDescription>Plug in your PowerBook.</AlertDescription>
 </Alert>`}
         />
+        <p>
+          Alerts render inline. To pop them onto the screen from an event, use
+          the{" "}
+          <Link href="/docs/toast" className="text-[#1c5fb8] hover:underline">
+            Toast
+          </Link>{" "}
+          component, which wraps these same panels in a Growl-style notifier.
+        </p>
       </>
     ),
   },
@@ -918,6 +928,51 @@ import { InfoIcon } from "lucide-react"
 
 <Textarea placeholder="Type your message here." />`}
         />
+      </>
+    ),
+  },
+  toast: {
+    title: "Toast",
+    description:
+      "Growl-style notifications: call toast() and an Alert slides in from the corner.",
+    body: (
+      <>
+        <Preview>
+          <ToastDemo />
+        </Preview>
+        <InstallCommand name="toast" />
+        <SectionTitle>Usage</SectionTitle>
+        <p>
+          Mount the <code>Toaster</code> once, near the root of your app:
+        </p>
+        <CodeBlock
+          code={`import { Toaster } from "@/components/ui/toast"
+
+<body>
+  {children}
+  <Toaster />
+</body>`}
+        />
+        <p>
+          Then fire notifications from anywhere with <code>toast()</code>:
+        </p>
+        <CodeBlock
+          code={`import { toast } from "@/components/ui/toast"
+
+toast({
+  title: "Software Update",
+  description: "Mac OS X 10.4 “Tiger” is available.",
+})
+
+toast({ variant: "destructive", title: "Disk not ejected properly" })`}
+        />
+        <p>
+          Toasts dismiss themselves after five seconds (tune with{" "}
+          <code>duration</code>), or on the little Aqua close pearl that shows
+          on hover. Installing <code>@aqua/toast</code> pulls in{" "}
+          <code>@aqua/alert</code> automatically, so the three variants match
+          your inline alerts.
+        </p>
       </>
     ),
   },

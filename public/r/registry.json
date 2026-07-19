@@ -126,6 +126,21 @@
       ]
     },
     {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Growl-style notifications: call toast() and an Alert slides in from the corner.",
+      "dependencies": ["lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "registryDependencies": ["@aqua/alert"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Toaster } from "@/registry/aqua/ui/toast";
+
 export const metadata: Metadata = {
   title: "Aqua — the classic Apple UI, as a shadcn registry",
   description:
@@ -21,6 +23,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Toaster />
       </body>
     </html>
   );
