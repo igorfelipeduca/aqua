@@ -278,7 +278,7 @@ export default function Home() {
               </ul>
             </StoreBox>
 
-            <StoreBox>
+            <StoreBox className="flex-1">
               <StoreHeader>Popular Components</StoreHeader>
               <p className="border-b border-[#e0e3e8] bg-[#eceef2] px-3 py-1 text-[11px] font-bold text-[#43484f]">
                 For Forms
@@ -324,7 +324,7 @@ export default function Home() {
                   <Window className="w-[185px]">
                     <WindowTitlebar>
                       <TrafficLights />
-                      <WindowTitle>Aqua</WindowTitle>
+                      <WindowTitle className="inset-x-16">Aqua</WindowTitle>
                     </WindowTitlebar>
                     <WindowContent className="px-3 py-4 text-center text-[11px]">
                       Pinstripes included.
@@ -505,7 +505,7 @@ export default function Home() {
               </ul>
             </StoreBox>
 
-            <StoreBox>
+            <StoreBox className="flex-1">
               <StoreHeader>Top Sellers</StoreHeader>
               <p className="border-b border-[#e0e3e8] bg-[#eceef2] px-3 py-1 text-[11px] font-bold text-[#43484f]">
                 Core
