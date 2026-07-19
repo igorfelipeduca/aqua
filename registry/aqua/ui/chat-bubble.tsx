@@ -17,7 +17,7 @@ function ChatPanel({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const chatBubbleVariants = cva(
-  "relative w-fit max-w-[85%] rounded-[18px] px-4 py-2.5 text-[15px] leading-[1.35] before:absolute before:bottom-[-2px] before:h-[15px] before:w-5 before:content-[''] after:absolute after:bottom-[-2px] after:h-6 after:w-[26px] after:bg-[var(--chat-panel,#f4f5f8)] after:content-['']",
+  "relative w-fit max-w-[85%] rounded-[18px] px-4 py-2.5 text-[15px] leading-[1.35] before:absolute before:bottom-[-2px] before:h-5 before:w-5 before:content-[''] after:absolute after:bottom-[-2px] after:h-6 after:w-[26px] after:bg-[var(--chat-panel,#f4f5f8)] after:content-['']",
   {
     variants: {
       from: {
