@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { CodeBlock, InstallCommand } from "@/components/code-block"
+import { Avatar } from "@/registry/aqua/ui/avatar"
 import { IPodDemo } from "@/components/ipod-demo"
 import { ThemePicker } from "@/components/theme-picker"
 import { Badge } from "@/registry/aqua/ui/badge"
@@ -180,6 +181,41 @@ export const DOCS: Record<string, Doc> = {
 <Button variant="secondary">cancel</Button>
 <Button variant="destructive" size="sm">delete</Button>`}
         />
+      </>
+    ),
+  },
+  avatar: {
+    title: "Avatar",
+    description:
+      "The iChat buddy icon: photo, initials over a gel color, or the classic generic silhouette.",
+    body: (
+      <>
+        <Preview>
+          <Avatar size="lg" src="https://github.com/igorfelipeduca.png" alt="Igor Duca" />
+          <Avatar size="lg" initials="SJ" />
+          <Avatar size="lg" initials="ID" color="#e02f6b" />
+          <Avatar size="lg" initials="JI" randomColor />
+          <Avatar size="lg" alt="Unknown buddy" />
+        </Preview>
+        <InstallCommand name="avatar" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Avatar } from "@/components/ui/avatar"
+
+<Avatar src="/buddy.png" alt="Igor Duca" />
+<Avatar initials="SJ" />
+<Avatar initials="ID" color="#e02f6b" />
+<Avatar initials="JI" randomColor />
+<Avatar />`}
+        />
+        <p>
+          With no <code>src</code> or <code>initials</code>, the avatar renders
+          the generic buddy silhouette. Without an explicit color, the gel
+          background follows the theme accent; <code>randomColor</code> picks a
+          stable era color from the initials, so the same buddy always gets the
+          same gel. Sizes come as <code>sm</code>, <code>default</code> and{" "}
+          <code>lg</code>.
+        </p>
       </>
     ),
   },

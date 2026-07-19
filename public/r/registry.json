@@ -48,6 +48,19 @@
       }
     },
     {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "The iChat buddy icon: photo, initials over a gel color, or the classic generic silhouette.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
