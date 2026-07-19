@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { AquaCursor } from "@/registry/aqua/ui/cursor";
 import { Toaster } from "@/registry/aqua/ui/toast";
 
 export const metadata: Metadata = {
@@ -22,8 +23,10 @@ export default function RootLayout({
             __html: `try{var a=localStorage.getItem("aqua-accent");if(a)document.documentElement.style.setProperty("--aqua-accent",a)}catch(e){}`,
           }}
         />
-        {children}
-        <Toaster />
+        <AquaCursor>
+          {children}
+          <Toaster />
+        </AquaCursor>
       </body>
     </html>
   );

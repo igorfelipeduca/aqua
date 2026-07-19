@@ -141,6 +141,18 @@
       ]
     },
     {
+      "name": "cursor",
+      "type": "registry:ui",
+      "title": "Cursor",
+      "description": "Wrap your app and get the classic Aqua arrow, pointing hand and I-beam cursors.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
