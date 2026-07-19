@@ -61,6 +61,71 @@
       ]
     },
     {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Soft gradient notice panel in note, caution and stop flavors.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Aqua context menu: white panel, gel highlight, checkable items and submenus.",
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Etched form label in classic panel typography.",
+      "dependencies": ["@radix-ui/react-label"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Glossy round radios that fill with gel and a white pip when selected.",
+      "dependencies": ["@radix-ui/react-radio-group"],
+      "files": [
+        {
+          "path": "registry/aqua/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line Aqua text well with an inset shadow and blue focus halo.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",

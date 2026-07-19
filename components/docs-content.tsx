@@ -1,7 +1,24 @@
 import Image from "next/image"
+import { InfoIcon, OctagonXIcon, TriangleAlertIcon } from "lucide-react"
 
 import { CodeBlock, InstallCommand } from "@/components/code-block"
+import { Alert, AlertDescription, AlertTitle } from "@/registry/aqua/ui/alert"
 import { Avatar } from "@/registry/aqua/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/registry/aqua/ui/dropdown-menu"
+import { Label } from "@/registry/aqua/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/aqua/ui/radio-group"
+import { Textarea } from "@/registry/aqua/ui/textarea"
 import { IPodDemo } from "@/components/ipod-demo"
 import { ThemePicker } from "@/components/theme-picker"
 import { Badge } from "@/registry/aqua/ui/badge"
@@ -184,6 +201,51 @@ export const DOCS: Record<string, Doc> = {
       </>
     ),
   },
+  alert: {
+    title: "Alert",
+    description: "Soft gradient notice panel in note, caution and stop flavors.",
+    body: (
+      <>
+        <Preview>
+          <div className="flex w-full max-w-md flex-col gap-3">
+            <Alert>
+              <InfoIcon />
+              <AlertTitle>Software Update</AlertTitle>
+              <AlertDescription>
+                Mac OS X 10.4 &quot;Tiger&quot; is available for your computer.
+              </AlertDescription>
+            </Alert>
+            <Alert variant="warning">
+              <TriangleAlertIcon />
+              <AlertTitle>Low battery</AlertTitle>
+              <AlertDescription>
+                You are now running on reserve power. Plug in your PowerBook.
+              </AlertDescription>
+            </Alert>
+            <Alert variant="destructive">
+              <OctagonXIcon />
+              <AlertTitle>Disk not ejected properly</AlertTitle>
+              <AlertDescription>
+                Eject a disk before disconnecting it, or you may lose data.
+              </AlertDescription>
+            </Alert>
+          </div>
+        </Preview>
+        <InstallCommand name="alert" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { InfoIcon } from "lucide-react"
+
+<Alert variant="warning">
+  <InfoIcon />
+  <AlertTitle>Low battery</AlertTitle>
+  <AlertDescription>Plug in your PowerBook.</AlertDescription>
+</Alert>`}
+        />
+      </>
+    ),
+  },
   avatar: {
     title: "Avatar",
     description:
@@ -191,11 +253,22 @@ export const DOCS: Record<string, Doc> = {
     body: (
       <>
         <Preview>
-          <Avatar size="lg" src="https://github.com/igorfelipeduca.png" alt="Igor Duca" />
-          <Avatar size="lg" initials="SJ" />
-          <Avatar size="lg" initials="ID" color="#e02f6b" />
-          <Avatar size="lg" initials="JI" randomColor />
-          <Avatar size="lg" alt="Unknown buddy" />
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-4">
+              <Avatar size="lg" src="https://github.com/igorfelipeduca.png" alt="Igor Duca" />
+              <Avatar size="lg" initials="SJ" />
+              <Avatar size="lg" initials="ID" color="#e02f6b" />
+              <Avatar size="lg" initials="JI" randomColor />
+              <Avatar size="lg" alt="Unknown buddy" />
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar size="lg" shape="circle" src="https://github.com/igorfelipeduca.png" alt="Igor Duca" />
+              <Avatar size="lg" shape="circle" initials="SJ" />
+              <Avatar size="lg" shape="circle" initials="ID" color="#e02f6b" />
+              <Avatar size="lg" shape="circle" initials="JI" randomColor />
+              <Avatar size="lg" shape="circle" alt="Unknown buddy" />
+            </div>
+          </div>
         </Preview>
         <InstallCommand name="avatar" />
         <SectionTitle>Usage</SectionTitle>
@@ -206,6 +279,7 @@ export const DOCS: Record<string, Doc> = {
 <Avatar initials="SJ" />
 <Avatar initials="ID" color="#e02f6b" />
 <Avatar initials="JI" randomColor />
+<Avatar shape="circle" initials="SJ" />
 <Avatar />`}
         />
         <p>
@@ -214,7 +288,8 @@ export const DOCS: Record<string, Doc> = {
           background follows the theme accent; <code>randomColor</code> picks a
           stable era color from the initials, so the same buddy always gets the
           same gel. Sizes come as <code>sm</code>, <code>default</code> and{" "}
-          <code>lg</code>.
+          <code>lg</code>; the shape is the square buddy well by default, or a
+          full circle with <code>shape=&quot;circle&quot;</code>.
         </p>
       </>
     ),
@@ -434,6 +509,65 @@ export const DOCS: Record<string, Doc> = {
       </>
     ),
   },
+  "dropdown-menu": {
+    title: "Dropdown Menu",
+    description:
+      "Aqua context menu: white panel, gel highlight, checkable items and submenus.",
+    body: (
+      <>
+        <Preview>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary">Action</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem>
+                Get Info<DropdownMenuShortcut>&#8984;I</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Duplicate<DropdownMenuShortcut>&#8984;D</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuCheckboxItem checked>
+                Show Item Info
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Arrange By</DropdownMenuLabel>
+              <DropdownMenuRadioGroup value="name">
+                <DropdownMenuRadioItem value="name">Name</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="kind">Kind</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem variant="destructive">
+                Move to Trash
+                <DropdownMenuShortcut>&#8984;&#9003;</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </Preview>
+        <InstallCommand name="dropdown-menu" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="secondary">Action</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Get Info</DropdownMenuItem>
+    <DropdownMenuItem variant="destructive">Move to Trash</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`}
+        />
+      </>
+    ),
+  },
   input: {
     title: "Input",
     description:
@@ -453,6 +587,28 @@ export const DOCS: Record<string, Doc> = {
           code={`import { Input } from "@/components/ui/input"
 
 <Input type="email" placeholder="steve@apple.com" />`}
+        />
+      </>
+    ),
+  },
+  label: {
+    title: "Label",
+    description: "Etched form label in classic panel typography.",
+    body: (
+      <>
+        <Preview>
+          <div className="grid w-full max-w-xs gap-2">
+            <Label htmlFor="account-name">Account Name</Label>
+            <Input id="account-name" placeholder="Igor Duca" />
+          </div>
+        </Preview>
+        <InstallCommand name="label" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Label } from "@/components/ui/label"
+
+<Label htmlFor="account-name">Account Name</Label>
+<Input id="account-name" />`}
         />
       </>
     ),
@@ -479,6 +635,42 @@ export const DOCS: Record<string, Doc> = {
           The stripes march to the right while work is in progress, and stand
           still under <code>prefers-reduced-motion</code>.
         </p>
+      </>
+    ),
+  },
+  "radio-group": {
+    title: "Radio Group",
+    description:
+      "Glossy round radios that fill with gel and a white pip when selected.",
+    body: (
+      <>
+        <Preview>
+          <RadioGroup defaultValue="genie">
+            <label className="flex items-center gap-2 text-[13px]">
+              <RadioGroupItem value="genie" /> Genie Effect
+            </label>
+            <label className="flex items-center gap-2 text-[13px]">
+              <RadioGroupItem value="scale" /> Scale Effect
+            </label>
+            <label className="flex items-center gap-2 text-[13px]">
+              <RadioGroupItem value="suck" disabled /> Suck Effect (hidden)
+            </label>
+          </RadioGroup>
+        </Preview>
+        <InstallCommand name="radio-group" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+
+<RadioGroup defaultValue="genie">
+  <label className="flex items-center gap-2">
+    <RadioGroupItem value="genie" /> Genie Effect
+  </label>
+  <label className="flex items-center gap-2">
+    <RadioGroupItem value="scale" /> Scale Effect
+  </label>
+</RadioGroup>`}
+        />
       </>
     ),
   },
@@ -704,6 +896,27 @@ export const DOCS: Record<string, Doc> = {
   </WindowTitlebar>
   <WindowContent className="p-6">...</WindowContent>
 </Window>`}
+        />
+      </>
+    ),
+  },
+  textarea: {
+    title: "Textarea",
+    description: "Multi-line Aqua text well with an inset shadow and blue focus halo.",
+    body: (
+      <>
+        <Preview>
+          <Textarea
+            className="max-w-sm"
+            placeholder="Dear Steve, about that one more thing..."
+          />
+        </Preview>
+        <InstallCommand name="textarea" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Textarea } from "@/components/ui/textarea"
+
+<Textarea placeholder="Type your message here." />`}
         />
       </>
     ),

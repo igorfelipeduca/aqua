@@ -1,0 +1,18 @@
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+  return (
+    <textarea
+      data-slot="textarea"
+      className={cn(
+        "min-h-20 w-full min-w-0 rounded-lg border border-[#9599a1] bg-white px-3 py-2 text-[13px] text-[#33383f] shadow-[inset_0_2px_3px_rgba(20,30,50,0.15)] outline-none transition-[box-shadow,border-color] placeholder:text-[#9aa0a8] focus-visible:border-[var(--aqua-ring,#6cb0f7)] focus-visible:ring-[3px] focus-visible:ring-[var(--aqua-ring,#6cb0f7)]/70 disabled:pointer-events-none disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Textarea }

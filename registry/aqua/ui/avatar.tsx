@@ -30,13 +30,23 @@ const avatarVariants = cva(
   {
     variants: {
       size: {
-        sm: "size-7 rounded-[5px] text-[10px]",
-        default: "size-10 rounded-[7px] text-[13px]",
-        lg: "size-16 rounded-[10px] text-lg",
+        sm: "size-7 text-[10px]",
+        default: "size-10 text-[13px]",
+        lg: "size-16 text-lg",
+      },
+      shape: {
+        square: "",
+        circle: "rounded-full",
       },
     },
+    compoundVariants: [
+      { size: "sm", shape: "square", class: "rounded-[5px]" },
+      { size: "default", shape: "square", class: "rounded-[7px]" },
+      { size: "lg", shape: "square", class: "rounded-[10px]" },
+    ],
     defaultVariants: {
       size: "default",
+      shape: "square",
     },
   }
 )
@@ -67,6 +77,7 @@ export type AvatarProps = React.ComponentProps<"span"> &
 function Avatar({
   className,
   size,
+  shape,
   src,
   alt,
   initials,
@@ -82,7 +93,7 @@ function Avatar({
       data-slot="avatar"
       role={src ? undefined : "img"}
       aria-label={src ? undefined : alt ?? initials ?? "avatar"}
-      className={cn(avatarVariants({ size }), className)}
+      className={cn(avatarVariants({ size, shape }), className)}
       style={resolvedColor ? { background: gelBackground(resolvedColor) } : undefined}
       {...props}
     >
