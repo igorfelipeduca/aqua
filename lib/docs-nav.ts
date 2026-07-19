@@ -31,4 +31,12 @@ export const DOCS_NAV: DocsNavSection[] = [
       { title: "Tooltip", slug: "tooltip" },
     ],
   },
+  {
+    label: "Signature",
+    items: [
+      { title: "Chat Bubble", slug: "chat-bubble" },
+      { title: "Dock", slug: "dock" },
+      { title: "Window", slug: "window" },
+    ],
+  },
 ]

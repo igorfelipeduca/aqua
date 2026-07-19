@@ -1,6 +1,15 @@
 import { CodeBlock, InstallCommand } from "@/components/code-block"
 import { Button } from "@/registry/aqua/ui/button"
+import { ChatBubble, ChatPanel } from "@/registry/aqua/ui/chat-bubble"
 import { Checkbox } from "@/registry/aqua/ui/checkbox"
+import { Dock, DockIcon, DockItem } from "@/registry/aqua/ui/dock"
+import {
+  TrafficLights,
+  Window,
+  WindowContent,
+  WindowTitle,
+  WindowTitlebar,
+} from "@/registry/aqua/ui/window"
 import {
   Dialog,
   DialogContent,
@@ -148,6 +157,40 @@ export const DOCS: Record<string, Doc> = {
       </>
     ),
   },
+  "chat-bubble": {
+    title: "Chat Bubble",
+    description:
+      "iChat gradient bubbles with sculpted tails, in blue and orange.",
+    body: (
+      <>
+        <Preview>
+          <ChatPanel className="max-w-sm">
+            <ChatBubble>hey, did you ship the registry?</ChatBubble>
+            <ChatBubble from="them">
+              just did. npx shadcn add @aqua/chat-bubble
+            </ChatBubble>
+            <ChatBubble>gorgeous</ChatBubble>
+          </ChatPanel>
+        </Preview>
+        <InstallCommand name="chat-bubble" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { ChatBubble, ChatPanel } from "@/components/ui/chat-bubble"
+
+<ChatPanel>
+  <ChatBubble>hey, did you ship the registry?</ChatBubble>
+  <ChatBubble from="them">just did.</ChatBubble>
+</ChatPanel>`}
+        />
+        <p>
+          The tails are sculpted from two pseudo-elements, so bubbles need the
+          solid panel background to sit on. <code>ChatPanel</code> provides it
+          and exposes it as the <code>--chat-panel</code> variable if you
+          restyle.
+        </p>
+      </>
+    ),
+  },
   checkbox: {
     title: "Checkbox",
     description: "Glossy square that fills with blue gel when checked.",
@@ -234,6 +277,56 @@ export const DOCS: Record<string, Doc> = {
   </DialogContent>
 </Dialog>`}
         />
+      </>
+    ),
+  },
+  dock: {
+    title: "Dock",
+    description:
+      "The translucent shelf: magnifying items, hover labels and running indicators.",
+    body: (
+      <>
+        <Preview>
+          <Dock>
+            <DockItem label="Finder" active>
+              <DockIcon>F</DockIcon>
+            </DockItem>
+            <DockItem label="Mail" active>
+              <DockIcon className="bg-[linear-gradient(180deg,#cfd8e2_0%,#8fa3b8_55%,#6b809a_100%)]">
+                @
+              </DockIcon>
+            </DockItem>
+            <DockItem label="iTunes">
+              <DockIcon className="bg-[linear-gradient(180deg,#b9f6a5_0%,#56c93f_55%,#3fa12f_100%)]">
+                ♪
+              </DockIcon>
+            </DockItem>
+            <DockItem label="Trash">
+              <DockIcon className="bg-[linear-gradient(180deg,#eceef2_0%,#c3c8cf_55%,#a9adb5_100%)] text-[#43484f] [text-shadow:0_1px_0_rgba(255,255,255,0.6)]">
+                T
+              </DockIcon>
+            </DockItem>
+          </Dock>
+        </Preview>
+        <InstallCommand name="dock" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import { Dock, DockIcon, DockItem } from "@/components/ui/dock"
+
+<Dock>
+  <DockItem label="Finder" active>
+    <DockIcon>F</DockIcon>
+  </DockItem>
+  <DockItem label="iTunes">
+    <DockIcon>♪</DockIcon>
+  </DockItem>
+</Dock>`}
+        />
+        <p>
+          <code>DockIcon</code> takes any content: a monogram, an{" "}
+          <code>&lt;img&gt;</code>, an icon. Tint it by overriding the
+          background gradient. <code>active</code> shows the running-app dot.
+        </p>
       </>
     ),
   },
@@ -373,6 +466,51 @@ export const DOCS: Record<string, Doc> = {
   <TabsContent value="general">...</TabsContent>
   <TabsContent value="advanced">...</TabsContent>
 </Tabs>`}
+        />
+      </>
+    ),
+  },
+  window: {
+    title: "Window",
+    description:
+      "Brushed metal window chrome with traffic lights and a titlebar.",
+    body: (
+      <>
+        <Preview>
+          <Window className="w-full max-w-md">
+            <WindowTitlebar>
+              <TrafficLights />
+              <WindowTitle>About This Mac</WindowTitle>
+            </WindowTitlebar>
+            <WindowContent className="flex flex-col gap-1 p-6">
+              <p className="font-semibold">Mac OS X</p>
+              <p className="text-[#7a8089]">Version 10.3.9</p>
+              <p className="pt-2">
+                Processor: 1.25 GHz PowerPC G4
+                <br />
+                Memory: 512 MB DDR SDRAM
+              </p>
+            </WindowContent>
+          </Window>
+        </Preview>
+        <InstallCommand name="window" />
+        <SectionTitle>Usage</SectionTitle>
+        <CodeBlock
+          code={`import {
+  TrafficLights,
+  Window,
+  WindowContent,
+  WindowTitle,
+  WindowTitlebar,
+} from "@/components/ui/window"
+
+<Window>
+  <WindowTitlebar>
+    <TrafficLights />
+    <WindowTitle>About This Mac</WindowTitle>
+  </WindowTitlebar>
+  <WindowContent className="p-6">...</WindowContent>
+</Window>`}
         />
       </>
     ),

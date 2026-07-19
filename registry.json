@@ -149,6 +149,42 @@
       ]
     },
     {
+      "name": "window",
+      "type": "registry:ui",
+      "title": "Window",
+      "description": "Brushed metal window chrome with traffic lights and a titlebar.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/window.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "The translucent shelf: magnifying items, hover labels and running indicators.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/dock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat-bubble",
+      "type": "registry:ui",
+      "title": "Chat Bubble",
+      "description": "iChat gradient bubbles with sculpted tails, in blue and orange.",
+      "files": [
+        {
+          "path": "registry/aqua/ui/chat-bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
