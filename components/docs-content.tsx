@@ -547,8 +547,8 @@ export const DOCS: Record<string, Doc> = {
   <IPodScreen>
     <IPodHeader>Now Playing</IPodHeader>
     <div className="px-4 py-3 text-center text-[13px]">
-      <p className="font-bold">The American Dawn</p>
-      <p>Her</p>
+      <p className="font-bold">Vertigo</p>
+      <p>U2</p>
     </div>
   </IPodScreen>
   <ClickWheel

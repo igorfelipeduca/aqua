@@ -10,11 +10,12 @@ import {
 } from "@/registry/aqua/ui/ipod"
 
 const TRACK = {
-  title: "The American Dawn",
-  artist: "Her",
-  index: 3,
-  total: 12,
-  duration: 227,
+  title: "Vertigo",
+  artist: "U2",
+  album: "How to Dismantle an Atomic Bomb",
+  index: 1,
+  total: 11,
+  duration: 194,
 }
 
 const formatTime = (seconds: number) => {
@@ -52,6 +53,7 @@ export function IPodDemo() {
           </p>
           <p className="font-bold">{TRACK.title}</p>
           <p>{TRACK.artist}</p>
+          <p className="truncate text-[11px] text-[#6b7f9c]">{TRACK.album}</p>
           <div className="mt-2 h-[9px] overflow-hidden rounded-[3px] border border-[#93a7c2] bg-[#e2e9f2] shadow-[inset_0_1px_2px_rgba(40,70,120,0.2)]">
             <div
               className="h-full bg-[linear-gradient(180deg,var(--aqua-gel-hi,#a5d0fa)_0%,var(--aqua-gel-mid,#4a95ef)_50%,var(--aqua-accent,#2f7de0)_55%,var(--aqua-gel-light,#6fb4f7)_100%)]"
